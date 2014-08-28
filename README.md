@@ -1,0 +1,1 @@
+ must add //= require hot_date_rails to application.js
