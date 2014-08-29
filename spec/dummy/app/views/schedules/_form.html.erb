@@ -1,0 +1,31 @@
+<%= form_for @schedule do |f| %>
+<table>
+	<tr>
+		<td>Name: <%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<td>Birthday: <%= f.date_picker :birthday %></td>
+	</tr>
+	<tr>
+		<td>Lunchtime: <%= f.time_picker :lunchtime %></td>
+	</tr>
+	<tr>
+		<td>Apocalypse: <%= f.datetime_picker :apocalypse %></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %>

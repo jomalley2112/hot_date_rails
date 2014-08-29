@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
   s.version     = HotDateRails::VERSION
   s.authors     = ["John O'Malley"]
   s.email       = ["jom@nycap.rr.com"]
-  s.homepage    = "TODO"
+  s.homepage    = "https://github.com/jomalley2112/hot_date_rails"
   s.summary     = "Summary of HotDateRails."
   s.description = "Description of HotDateRails."
   s.license     = "MIT"

@@ -1,27 +1,3 @@
 <h4>New Schedule</h4>
 
-<%= form_for @schedule do |f| %>
-<table>
-	<tr>
-		<td>Name: <%= f.text_field :name %></td>
-	</tr>
-	<tr>
-		<td><%= f.date_picker :birthday %></td>
-	</tr>
-	<tr>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-	</tr>
-	<tr>
-		<td></td>
-	</tr>
-</table>
-<% end %>
+<%= render "form" %>
