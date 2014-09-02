@@ -6,3 +6,4 @@ en:
     formats:
       default: "%H:%M"
       datetime: "%m/%d/%Y %H:%M"
+      w_seconds: "%H:%M:%S"

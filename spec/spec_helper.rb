@@ -3,7 +3,7 @@ require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
 #require 'rspec/autorun'
 require 'factory_girl_rails'
-
+require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
 
@@ -13,17 +13,25 @@ Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
-    config.mock_with :rspec
-    config.use_transactional_fixtures = true
-    config.infer_base_class_for_anonymous_controllers = false
-    config.order = "random"
-    config.include Capybara::DSL
-    config.expect_with :rspec do |c|
-      c.syntax = [:should, :expect]
-    end
-    config.color = true
+  config.mock_with :rspec
+  config.use_transactional_fixtures = false
+  config.infer_base_class_for_anonymous_controllers = false
+  config.order = "random"
+  config.include Capybara::DSL
+  config.expect_with :rspec do |c|
+    c.syntax = [:should, :expect]
+  end
+  config.color = true
+  config.use_transactional_fixtures = false
+  config.before(:each) do
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+    FactoryGirl.reload
+  end
 end
 
+
+#For testing jQuery UI slider widget
 module CapybaraExtension
   def drag_by(right_by, down_by)
     base.drag_by(right_by, down_by)

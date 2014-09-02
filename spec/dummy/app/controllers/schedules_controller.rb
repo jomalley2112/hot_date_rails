@@ -17,7 +17,17 @@ class SchedulesController < ApplicationController
 		end
 	end
 
+	def update
+		@schedule = Schedule.find(params[:id])
+		if @schedule.update_attributes(schedule_params)
+			redirect_to edit_schedule_url(@schedule)
+		else
+			flash[:alert] = "Unable to save schedule"
+			render :edit
+		end
+	end
+
 	def schedule_params
-		params.require(:schedule).permit(:name, :lunchtime, :apocalypse, :birthday)
+		params.require(:schedule).permit(:name, :lunchtime, :apocalypse, :birthday, :alarm_setting)
 	end
 end

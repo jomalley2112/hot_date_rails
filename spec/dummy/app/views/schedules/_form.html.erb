@@ -1,19 +1,25 @@
 <%= form_for @schedule do |f| %>
 <table>
 	<tr>
-		<td>Name: <%= f.text_field :name %></td>
+		<td><%= f.label :name %></td>
+		<td><%= f.text_field :name %></td>
 	</tr>
 	<tr>
-		<td>Birthday: <%= f.date_picker :birthday %></td>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday, :style => "width: 200px", :colspan => "1" %></td>
 	</tr>
 	<tr>
-		<td>Lunchtime: <%= f.time_picker :lunchtime %></td>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime %></td>
 	</tr>
 	<tr>
-		<td>Apocalypse: <%= f.datetime_picker :apocalypse %></td>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse %></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td><%= f.hd_label :alarm_setting %></td>
+		<!-- <td><%#= f.time_picker :alarm_setting, :time_format => "HH:mm:ss" %></td> -->
+		<td><%= f.time_picker_w_seconds :alarm_setting %></td>
 	</tr>
 	<tr>
 		<td></td>
