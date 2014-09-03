@@ -28,7 +28,17 @@ $(document).on 'ready page:load', ->
       hourGrid: 6
       minuteGrid: 20
       secondGrid: 20
-  
+
+# dateFormat
+# timeFormat & altTimeFormat (should probably be same)
+# hourGrid, minuteGrid, secondGrid
+
+# Datepicker Only
+# changeYear, changeMonth  
+
+#Timepicker Only
+# timeOnly - should only be passed to override showing calendar on timepicker
+
 
 # $(document).on 'ready page:load', ->
 #   $("input.timepicker").each (i) ->
@@ -38,5 +48,3 @@ $(document).on 'ready page:load', ->
 #       minuteGrid: 10
 #       secondGrid: 10
 #       timeFormat: this.getAttribute("data-time-format")
-      
-
