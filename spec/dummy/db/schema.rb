@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140827212211) do
+ActiveRecord::Schema.define(version: 20140909013705) do
 
   create_table "schedules", force: true do |t|
     t.string   "name"
@@ -23,6 +23,11 @@ ActiveRecord::Schema.define(version: 20140827212211) do
     t.time     "alarm_setting"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.time     "suppertime"
+    t.time     "beer_oclock"
+    t.time     "sleepytime"
+    t.time     "party_time"
+    t.date     "easter"
   end
 
 end

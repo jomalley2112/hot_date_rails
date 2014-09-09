@@ -2,8 +2,12 @@ en:
   date:
     formats:
       default: "%m/%d/%Y"
+      full_month: "%B %-d, %Y"
+      full_day_month: "%A %B %-d, %Y"
   time:
     formats:
       default: "%H:%M"
       datetime: "%m/%d/%Y %H:%M"
       w_seconds: "%H:%M:%S"
+      lc_merid: "%-l:%M %P"
+      uc_merid: "%-l:%M %p"

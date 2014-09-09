@@ -2,7 +2,7 @@ $(document).on 'ready page:load', ->
   $("input.datepicker").each (i) ->
     $(this).datepicker
       altFormat: "yy-mm-dd"
-      dateFormat: "mm/dd/yy"
+      dateFormat: this.getAttribute("data-date-format") #"mm/dd/yy"
       altField: $(this).next()
       changeYear: true
       changeMonth: true
@@ -22,12 +22,24 @@ $(document).on 'ready page:load', ->
     $(this).datetimepicker
       altField: $(this).next()
       altFieldTimeOnly: false
-      altTimeFormat: this.getAttribute("data-time-format")
       timeFormat: this.getAttribute("data-time-format")
-      timeOnly: true
-      hourGrid: 6
-      minuteGrid: 20
-      secondGrid: 20
+      timeOnly: true #when false time is properly selected
+      hourGrid: this.getAttribute("data-hour-grid")
+      minuteGrid: this.getAttribute("data-minute-grid")
+      secondGrid: this.getAttribute("data-second-grid")
+      defaultValue: this.value
+    #debugger
+      
+      #
+      #altDateFormat: "yy-mm-dd"
+      #altTimeFormat: this.getAttribute("data-time-format") #default is same as timeFormat
+
+
+
+
+
+
+
 
 # dateFormat
 # timeFormat & altTimeFormat (should probably be same)

@@ -6,7 +6,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :birthday %></td>
-		<td><%= f.date_picker :birthday, :style => "width: 200px", :colspan => "1" %></td>
+		<td><%= f.date_picker :birthday %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :lunchtime %></td>
@@ -18,14 +18,23 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :alarm_setting %></td>
-		<!-- <td><%#= f.time_picker :alarm_setting, :time_format => "HH:mm:ss" %></td> -->
-		<td><%= f.time_picker_w_seconds :alarm_setting %></td>
+		<td><%= f.time_picker :alarm_setting, { :hour_grid => "12", :time_format => "HH:mm:ss" }, :w_seconds %></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td><%= f.hd_label :suppertime %></td>
+		<td><%= f.time_picker :suppertime, { :time_format => "h:mm tt" }, :lc_merid %></td>
 	</tr>
 	<tr>
-		<td></td>
+		<td><%= f.hd_label :beer_oclock %></td>
+		<td><%= f.time_picker :beer_oclock, { :time_format => "h:mm TT" }, :uc_merid %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :christmas %></td>
+		<td><%= f.date_picker :christmas, { :date_format => "MM d, yy" }, :full_month %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :easter %></td>
+		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
 	</tr>
 	<tr>
 		<td></td>
