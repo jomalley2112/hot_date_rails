@@ -34,7 +34,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :easter %></td>
-		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
+		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;", data: { microdata: "test" } } }, :full_day_month %></td>
 	</tr>
 	<tr>
 		<td></td>

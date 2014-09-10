@@ -14,6 +14,7 @@ require "hot_date_rails"
 module Dummy
   class Application < Rails::Application
     config.time_zone = 'Eastern Time (US & Canada)'
+    #config.assets.version = '1.0'
   end
 end
 
