@@ -1,4 +1,4 @@
-# Unfinished Project #
+# HotDateRails #
 
 #### Usage ####
 - Add `gem 'hot_date_rails'` to Gemfile
@@ -7,8 +7,30 @@
 - In application.css add ` *=require hot_date_rails`
 
 #### Example Form Helper Calls ####
-- Coming Soon!
+```RHTML
+<%= form_for @schedule do |f| %>
+<table>
+	<tr>
+		<td><%= f.label :name %></td>
+		<td><%= f.text_field :name %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse %></td>
+	</tr>
+<% end %>
+```
+- More Coming Soon!
 
+-Not all options implemented yet
 #### Form Helper Options ####
 |                | DatePicker | TimePicker | DatetimePicker |
 | -------------- | ---------- | ---------- | -------------- |
