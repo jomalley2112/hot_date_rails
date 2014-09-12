@@ -21,21 +21,23 @@ module FormHelper
 
 	  private
 	  def draw_ext_input(attr, cls, date_format, time_format, locale_format=nil, opts={})
-	  	#binding.pry
 	  	opts.reverse_merge!(html: {})
 	  	value = object.send(attr) if object.respond_to? attr
 	  	value = I18n.localize(value, format: locale_format) if value.present?
 		  
 		  #Set html attribute hash here so :class and :id always get overridden in next lines
 		  input_attrs = opts[:html] 
-		  input_attrs[:class] = cls 
+		  input_attrs[:class] = (input_attrs.fetch(:class, "").split(" ") << cls).join(" ")
 	  	input_attrs[:id] = attr
-	  	#binding.pry
-	  	input_attrs[:data] = opts[:data] ||= {}
+
+	  	opts[:hd_opts] ||= {}
+	  	opts[:data] ||= {}
+	  	input_attrs[:data] = opts[:hd_opts].merge(opts[:data])
 	  	#date_format & time_format are the only options that can be passed in at the top level of opts
 	  	input_attrs[:data][:date_format] = (opts[:date_format] || date_format)
 	  	input_attrs[:data][:time_format] = (opts[:time_format] || time_format)
 	  	
+	  	#TODO store these defaults somewhere and allow users to override them
 	  	input_attrs[:data][:hour_grid]   ||= "23"
 	  	input_attrs[:data][:minute_grid] ||= "59"
 	  	input_attrs[:data][:second_grid] ||= "59"

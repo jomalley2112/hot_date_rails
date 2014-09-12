@@ -6,9 +6,12 @@
 	</tr> -->
 	<tr>
 		<td><%= f.hd_label :lunchtime %></td>
-		<td><%= f.time_picker :lunchtime, { data: {current_text: "Current", close_text: "Set", time_suffix: " o'clock"} } %></td>
+		<td><%= f.time_picker :lunchtime, { hd_opts: {current_text: "Current", close_text: "Set", time_suffix: " o'clock"}, data: { my_data: "true" } } %></td>
 	</tr>
-	
+	<tr>
+		<td><%= f.hd_label :suppertime %></td>
+		<td><%= f.time_picker :suppertime, { data: { my_data: "true" }, html: { class: "css_class my_class" } } %></td>
+	</tr>
 	<tr>
 		<td></td>
 	</tr>

@@ -4,8 +4,24 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	before(:each) do
 	  visit '/custom_schedules/new'
 	end
+
+	describe "doesn't affect certain existing features" do
+		describe "still allows microdata to be passed through", :js => true do
+			it "has the data-my-data attribute" do
+				expect(find("input#suppertime")['data-my-data']).to match("true")
+			end
+		end
+		describe "allows css classes to be passed through while adding the necessary picker class" do
+		  it "has classes 'css_class' and 'my_class'" do
+		  	expect(find("input#suppertime")['class']).to match("css_class")
+		  	expect(find("input#suppertime")['class']).to match("my_class")
+		  end
+		end
+	end
+	
+
 	describe "Date Picker" do
-	  
+	  pending
 	end
 
 	describe "Time Picker", :js => true do
@@ -26,7 +42,7 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	end
 
 	describe "Datetime Picker" do
-	  
+	  pending
 	end
 
 end
