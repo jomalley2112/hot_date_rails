@@ -39,7 +39,7 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 <table>
 	<tr>
 		<td><%= f.hd_label :alarm_setting %></td>
-		<td><%= f.time_picker :alarm_setting, { :hour_grid => "12", :time_format => "HH:mm:ss" }, :w_seconds %></td>
+		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", :hd_opts => { :hour_grid => "12" } }, :w_seconds %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :suppertime %></td>
