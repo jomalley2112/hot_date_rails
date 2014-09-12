@@ -19,25 +19,40 @@ $(document).on 'ready page:load', ->
 
 $(document).on 'ready page:load', ->
   $("input.timepicker").each (i) ->
-    $(this).datetimepicker
-      altField: $(this).next()
-      altFieldTimeOnly: false
-      timeFormat: this.getAttribute("data-time-format")
-      timeOnly: true #when false time is properly selected
-      hourGrid: this.getAttribute("data-hour-grid")
-      minuteGrid: this.getAttribute("data-minute-grid")
-      secondGrid: this.getAttribute("data-second-grid")
-      defaultValue: this.value
-    #debugger
+    defOpts = {timeOnly: true
+    altField: $(this).next()
+    altFieldTimeOnly: false
+    defaultValue: this.value}
+    setPickerOptions( this, defOpts )
+    
       
-      #
-      #altDateFormat: "yy-mm-dd"
-      #altTimeFormat: this.getAttribute("data-time-format") #default is same as timeFormat
+
+setPickerOptions = (input, defOpts) ->
+  #$(input).datetimepicker("option","altField", $(input).next()) #always the same
+  userOpts = $(input).data()
+  allOpts = $.extend({}, defOpts, userOpts)
+  #debugger
+  $(input).datetimepicker(allOpts)
+  #debugger
 
 
 
 
 
+
+
+#dataObj = input.data()
+# $.each(dataObj, function (k,v) {
+#     console.log(k+"="+v)
+# });
+
+# datepicker=[object Object] VM5046:3
+# timeFormat=null VM5046:3
+# secondGrid=59 VM5046:3
+# minuteGrid=59 VM5046:3
+# jom=HERE VM5046:3
+# hourGrid=23 VM5046:3
+# dateFormat=DD MM d, yy 
 
 
 

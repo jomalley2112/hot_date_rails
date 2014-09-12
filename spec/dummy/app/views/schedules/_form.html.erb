@@ -18,7 +18,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :alarm_setting %></td>
-		<td><%= f.time_picker :alarm_setting, { :hour_grid => "12", :time_format => "HH:mm:ss" }, :w_seconds %></td>
+		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", data: {:hour_grid => "12"} }, :w_seconds %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :suppertime %></td>
@@ -34,7 +34,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :easter %></td>
-		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;", data: { microdata: "test" } } }, :full_day_month %></td>
+		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
 	</tr>
 	<tr>
 		<td></td>

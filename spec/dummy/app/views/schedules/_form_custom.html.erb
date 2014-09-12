@@ -1,0 +1,19 @@
+<%= form_for @schedule do |f| %>
+<table>
+	<!-- <tr>
+		<td><%= f.label :name %></td>
+		<td><%= f.text_field :name %></td>
+	</tr> -->
+	<tr>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime, { data: {current_text: "Current", close_text: "Set", time_suffix: " o'clock"} } %></td>
+	</tr>
+	
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %>
