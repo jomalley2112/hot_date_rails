@@ -7,8 +7,8 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 - Add `gem 'hot_date_rails', :github => 'jomalley2112/hot_date_rails'` to Gemfile
 - run `bundle install`
 - make sure application.js already contains the following
-	- //= require jquery
-  - //= require jquery_ujs
+  - `//= require jquery`
+  - `//= require jquery_ujs`
 - In application.js add `//=require hot_date_rails`
 - In application.css add ` *=require hot_date_rails`
 
