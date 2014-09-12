@@ -4,7 +4,7 @@
 There's a ton of time/date/datetime picker gems out, but I couldn't find one that worked for what I needed. This one is a single gem that allows you to add date only, time only and datetime pickers to your forms. This gem also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
 
 #### Usage ####
-- Add `gem 'hot_date_rails'` to Gemfile
+- Add `gem 'hot_date_rails', :github => 'jomalley2112/hot_date_rails'` to Gemfile
 - run `bundle install`
 - make sure application.js already contains the following
 	- //= require jquery
