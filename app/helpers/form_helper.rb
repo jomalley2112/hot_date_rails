@@ -38,9 +38,10 @@ module FormHelper
 	  	input_attrs[:data][:time_format] = (opts[:time_format] || time_format)
 	  	
 	  	#TODO store these defaults somewhere and allow users to override them
-	  	input_attrs[:data][:hour_grid]   ||= "23"
-	  	input_attrs[:data][:minute_grid] ||= "59"
-	  	input_attrs[:data][:second_grid] ||= "59"
+	  	#binding.pry
+	  	input_attrs[:data][:hour_grid]   ||= HotDateRails.config.hour_grid
+	  	input_attrs[:data][:minute_grid] ||= HotDateRails.config.minute_grid
+	  	input_attrs[:data][:second_grid] ||= HotDateRails.config.second_grid
 	    
 	    text_field_tag("#{attr}", (value || ""), input_attrs) + \
 	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" })
