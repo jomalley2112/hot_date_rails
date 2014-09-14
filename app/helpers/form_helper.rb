@@ -33,12 +33,12 @@ module FormHelper
 	  	opts[:hd_opts] ||= {}
 	  	opts[:data] ||= {}
 	  	input_attrs[:data] = opts[:hd_opts].merge(opts[:data])
+
 	  	#date_format & time_format are the only options that can be passed in at the top level of opts
 	  	input_attrs[:data][:date_format] = (opts[:date_format] || date_format)
 	  	input_attrs[:data][:time_format] = (opts[:time_format] || time_format)
 	  	
-	  	#TODO store these defaults somewhere and allow users to override them
-	  	#binding.pry
+	  	#Time grids have default values set in config/initializers/hot_date_rails.rb
 	  	input_attrs[:data][:hour_grid]   ||= HotDateRails.config.hour_grid
 	  	input_attrs[:data][:minute_grid] ||= HotDateRails.config.minute_grid
 	  	input_attrs[:data][:second_grid] ||= HotDateRails.config.second_grid

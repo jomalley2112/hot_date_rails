@@ -1,6 +1,7 @@
 $(document).on 'ready page:load', ->
   $("input.datepicker").each (i) ->
     $(this).datepicker
+      showTimepicker: false
       altFormat: "yy-mm-dd"
       dateFormat: this.getAttribute("data-date-format") #"mm/dd/yy"
       altField: $(this).next()
@@ -28,12 +29,10 @@ $(document).on 'ready page:load', ->
       
 
 setPickerOptions = (input, defOpts) ->
-  #$(input).datetimepicker("option","altField", $(input).next()) #always the same
   userOpts = $(input).data()
   allOpts = $.extend({}, defOpts, userOpts)
-  #debugger
   $(input).datetimepicker(allOpts)
-  #debugger
+  
 
 
 

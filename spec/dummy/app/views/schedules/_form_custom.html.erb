@@ -10,7 +10,11 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :suppertime %></td>
-		<td><%= f.time_picker :suppertime, { data: { my_data: "true" }, html: { class: "css_class my_class" } } %></td>
+		<td><%= f.time_picker :suppertime, { data: { my_data: "true" }, html: { class: "css_class my_class" }, hd_opts: { minute_grid: "20" } } %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :alarm_setting %></td>
+		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", hd_opts: {:hour_grid => "4", :minute_grid => "10", :second_grid => ""} }, :w_seconds %></td>
 	</tr>
 	<tr>
 		<td></td>
