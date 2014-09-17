@@ -17,6 +17,14 @@
 		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", hd_opts: {:hour_grid => "4", :minute_grid => "10", :second_grid => ""} }, :w_seconds %></td>
 	</tr>
 	<tr>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday, { hd_opts: {show_button_panel: true} } %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse, { hd_opts: {separator: " @ "} } %></td>
+	</tr>
+	<tr>
 		<td></td>
 	</tr>
 	<tr>

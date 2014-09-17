@@ -20,8 +20,14 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	end
 	
 
-	describe "Date Picker" do
-	  pending
+	describe "Date Picker", :js => true do
+	  before(:each) do
+		  find("input#birthday").click
+		end
+		it "allows us to display the panel containing the Today and Done buttons" do
+			page.should have_selector("button.ui-datepicker-current", visible: true)
+			page.should have_selector("button.ui-datepicker-close", visible: true)
+		end
 	end
 
 	describe "Time Picker", :js => true do
@@ -41,8 +47,14 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	  end
 	end
 
-	describe "Datetime Picker" do
-	  pending
+	describe "Datetime Picker", :js => true do
+	  before(:each) do
+		  find("input#apocalypse").click
+		end
+		it "allows us to add a separator between the date and time in the input value" do
+			find("a", text: "17").click
+			find("input#apocalypse").value.should match(/\d\d\/\d\d\/\d{4} @ \d\d:\d\d/)
+		end
 	end
 
 end
