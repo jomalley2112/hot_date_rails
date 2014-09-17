@@ -1,0 +1,34 @@
+<%= form_for @schedule do |f| %>
+<table>
+	<!-- <tr>
+		<td><%= f.label :name %></td>
+		<td><%= f.text_field :name %></td>
+	</tr> -->
+	<tr>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime, { hd_opts: {current_text: "Current", close_text: "Set", time_suffix: " o'clock"}, data: { my_data: "true" } } %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :suppertime %></td>
+		<td><%= f.time_picker :suppertime, { data: { my_data: "true" }, html: { class: "css_class my_class" }, hd_opts: { minute_grid: "20" } } %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :alarm_setting %></td>
+		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", hd_opts: {:hour_grid => "4", :minute_grid => "10", :second_grid => ""} }, :w_seconds %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday, { hd_opts: {show_button_panel: true} } %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse, { hd_opts: {separator: " @ "} } %></td>
+	</tr>
+	<tr>
+		<td></td>
+	</tr>
+	<tr>
+		<td><%= f.submit %></td>
+	</tr>
+</table>
+<% end %>

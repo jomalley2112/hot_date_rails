@@ -4,11 +4,11 @@
 There's a ton of time/date/datetime picker gems out, but I couldn't find one that worked for what I needed. This one is a single gem that allows you to add date only, time only and datetime pickers to your forms. This gem also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
 
 #### Usage ####
-- Add `gem 'hot_date_rails'` to Gemfile
+- Add `gem 'hot_date_rails', :github => 'jomalley2112/hot_date_rails'` to Gemfile
 - run `bundle install`
 - make sure application.js already contains the following
-	- //= require jquery
-  - //= require jquery_ujs
+  - `//= require jquery`
+  - `//= require jquery_ujs`
 - In application.js add `//=require hot_date_rails`
 - In application.css add ` *=require hot_date_rails`
 
@@ -39,7 +39,7 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 <table>
 	<tr>
 		<td><%= f.hd_label :alarm_setting %></td>
-		<td><%= f.time_picker :alarm_setting, { :hour_grid => "12", :time_format => "HH:mm:ss" }, :w_seconds %></td>
+		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", :hd_opts => { :hour_grid => "12" } }, :w_seconds %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :suppertime %></td>
@@ -78,6 +78,15 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 
 \* *time-format & alt-time-format should probably be set to the same value*
 
+#### Overriding Defaults ####
+Add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call:
+```ruby
+HotDateRails.config do |config|
+  config.hour_grid = "12"
+  config.minute_grid = "15"
+  config.second_grid = "30"
+end
+```
 
 ##### TODO #####
 - see if we can/should add these to hot_date_rails too so user doesn't need to

@@ -3,6 +3,7 @@ class SchedulesController < ApplicationController
 		@schedule = Schedule.new
 	end
 
+
 	def edit
 		@schedule = Schedule.find(params[:id])
 	end
@@ -27,6 +28,17 @@ class SchedulesController < ApplicationController
 		end
 	end
 
+
+	def new_custom
+		@schedule = Schedule.new
+	end
+
+	def edit_custom
+		@schedule = Schedule.find(params[:id])
+	end
+
+
+	private
 	def schedule_params
 		params.require(:schedule).permit(:name, :lunchtime, :apocalypse, 
 										:birthday, :alarm_setting, :epoch, :christmas, :suppertime, :beer_oclock,
