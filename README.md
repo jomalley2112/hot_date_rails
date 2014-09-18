@@ -19,7 +19,7 @@ form_object.time_picker(name, options={}, locale_format=nil)
 form_object.datetime_picker(name, options={}, locale_format=nil)
 ```
 - *name* is a symbol representing the form field
-- *options* see Form Helper Options section below
+- *options* see the [Form Helper Options](#fho) section below
 - *locale_format* is the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
 	- A base set of locale_formats are included for english and custom formats can be added.
 
@@ -71,7 +71,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 </table>
 ```
 
-#### Form Helper Options ####
+#### <a name="fho"></a>Form Helper Options ####
 - :date_format - datepicker (format string)[http://api.jqueryui.com/datepicker/]
 	- default: "mm/dd/yy"
 - :time_format - timepicker (format string)[http://trentrichardson.com/examples/timepicker/]
