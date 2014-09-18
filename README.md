@@ -72,14 +72,14 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 ```
 
 #### <a name="fho"></a>Form Helper Options ####
-- :date_format - datepicker (format string)[http://api.jqueryui.com/datepicker/]
+- :date_format - datepicker [format string](http://api.jqueryui.com/datepicker/)
 	- default: "mm/dd/yy"
-- :time_format - timepicker (format string)[http://trentrichardson.com/examples/timepicker/]
+- :time_format - timepicker [format string](http://trentrichardson.com/examples/timepicker/)
 	- default: "HH:mm"
 - :html - attributes to be added to the input field
 - :hd_opts - options to be applied to the picker object
 
-##### Commonly used :hd_opts
+##### Common :hd_opts
 |                  | DatePicker | TimePicker | DatetimePicker |
 | --------------   | ---------- | ---------- | -------------- |
 | change_month     |     X      |            |       ?        |
