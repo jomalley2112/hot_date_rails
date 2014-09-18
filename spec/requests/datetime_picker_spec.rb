@@ -19,15 +19,31 @@ RSpec.describe "Datetime Picker", :type => :request do
     	find("#apocalypse").click
     	curr_date = Time.now
     	click_link("1")
-    	click_link("1")
-    	# find("select[data-unit='hour']").select("13")
-    	# find("select[data-unit='minute']").select("14")
     	find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0) #1 pm
     	find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 min
     	find("button.ui-datepicker-close").click
     	find("#apocalypse").value
     		.should eq "#{'%02i' % curr_date.month}/01/#{curr_date.year} 13:15"
     end
+
+    describe "Alternate Datetime formats" do
+      it "shows datetime with seconds" do
+        find("#epoch").click
+        curr_date = Time.now
+        click_link("1")
+        find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0) #1 pm
+        find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 min
+        find("div.ui_tpicker_second_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 sec
+        find("button.ui-datepicker-close").click
+        find("#epoch").value
+          .should eq "#{curr_date.month}/1/#{curr_date.year} 13:15:15"
+        click_button("Create Schedule")
+        #binding.pry
+        find("#epoch").value
+          .should eq "#{curr_date.month}/1/#{curr_date.year} 13:15:15"
+      end
+    end
+
 	end
   
   describe "Update Existing", :js => true do

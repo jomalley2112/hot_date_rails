@@ -37,6 +37,10 @@
 		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
 	</tr>
 	<tr>
+		<td><%= f.hd_label :epoch %></td>
+		<td><%= f.datetime_picker :epoch, { date_format: "m/d/yy", time_format: "HH:mm:ss", hd_opts: {alt_time_format: "HH:mm:ss" } }, :datetime_w_seconds %></td>
+	</tr>
+	<tr>
 		<td></td>
 	</tr>
 	<tr>

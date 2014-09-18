@@ -8,6 +8,7 @@ en:
     formats:
       default: "%H:%M"
       datetime: "%m/%d/%Y %H:%M"
+      datetime_w_seconds: "%-m/%-e/%Y %H:%M:%S"
       w_seconds: "%H:%M:%S"
       lc_merid: "%-l:%M %P"
       uc_merid: "%-l:%M %p"
