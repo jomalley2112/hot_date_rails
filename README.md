@@ -18,10 +18,10 @@ form_object.date_picker(name, options={}, locale_format=nil)
 form_object.time_picker(name, options={}, locale_format=nil)
 form_object.datetime_picker(name, options={}, locale_format=nil)
 ```
-- *name* is a symbol representing the form field
-- *options* see the [Form Helper Options](#fho) section below
-- *locale_format* is the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
-	- A base set of locale_formats are included for english and custom formats can be added.
+- *name* - a symbol representing the form field
+- *options* - see the [Form Helper Options](#fho) section below
+- *locale_format* - the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
+	- A [base set](#locales) of locale_formats are included for english and custom formats can be added.
 
 #### Example Form Helper Calls ####
 ```RHTML
@@ -82,13 +82,16 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 ##### Common :hd_opts
 |                  | DatePicker | TimePicker | DatetimePicker |
 | --------------   | ---------- | ---------- | -------------- |
-| change_month     |     X      |            |       ?        |
-| change_year      |     X      |            |       ?        |
+| change_month     |     X      |            |                |
+| change_year      |     X      |            |                |
 | alt_time_format* |            |     X      |       X        |
 | hour_grid        |            |     X      |       X        |
 | minute_grid      |            |     X      |       X        |
 | second_grid      |            |     X      |       X        |
 | separator        |            |            |       X        |
+| current_text     |     X      |     X      |       X        |
+| close_text       |     X      |     X      |       X        |
+| time_suffix      |            |     X      |       X        |
 
 
 \* *alt_time_format should be overridden when you need more precision than minutes for a datetime picker (e.g. "HH:mm:ss")*
@@ -105,6 +108,24 @@ HotDateRails.config do |config|
 end
 ```
 \* *Note that if you override the date and/or time format you should also edit the corresponding entries in your locale(s) file(s)*
+
+#### <a name="locales"></a>Base Set of included locale formats ####
+```YAML
+en:
+	date:
+    formats:
+      default: "%m/%d/%Y"
+      full_month: "%B %-d, %Y"
+      full_day_month: "%A %B %-d, %Y"
+  time:
+    formats:
+      default: "%H:%M"
+      datetime: "%m/%d/%Y %H:%M"
+      datetime_w_seconds: "%-m/%-e/%Y %H:%M:%S"
+      w_seconds: "%H:%M:%S"
+      lc_merid: "%-l:%M %P"
+      uc_merid: "%-l:%M %p"
+```
 
 ##### TODO #####
 - see if we can/should add these to hot_date_rails too so user doesn't need to
