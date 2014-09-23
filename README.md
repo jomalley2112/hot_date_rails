@@ -88,18 +88,23 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 | hour_grid        |            |     X      |       X        |
 | minute_grid      |            |     X      |       X        |
 | second_grid      |            |     X      |       X        |
+| separator        |            |            |       X        |
+
 
 \* *alt_time_format should be overridden when you need more precision than minutes for a datetime picker (e.g. "HH:mm:ss")*
 
 #### Overriding Global Defaults ####
-Add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call:
+- There are five default values that can be overridden globally. To do so add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call\*:
 ```ruby
 HotDateRails.config do |config|
   config.hour_grid = "12"
   config.minute_grid = "15"
   config.second_grid = "30"
+  config.date_format = "MM d, yy"
+	config.time_format = "h:mm tt"
 end
 ```
+\* *Note that if you override the date and/or time format you should also edit the corresponding entries in your locale(s) file(s)*
 
 ##### TODO #####
 - see if we can/should add these to hot_date_rails too so user doesn't need to

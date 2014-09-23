@@ -24,8 +24,19 @@
 		<td><%= f.hd_label :apocalypse %></td>
 		<td><%= f.datetime_picker :apocalypse, { hd_opts: {separator: " @ "} } %></td>
 	</tr>
+	<!-- Not passing in locale formats for these because we don't care about format displayed by the system
+	for the tests -->
 	<tr>
-		<td></td>
+		<td><%= f.hd_label :christmas %></td>
+		<td><%= f.date_picker :christmas %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :beer_oclock %></td>
+		<td><%= f.time_picker :beer_oclock %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :epoch %></td>
+		<td><%= f.datetime_picker :epoch %></td>
 	</tr>
 	<tr>
 		<td><%= f.submit %></td>
