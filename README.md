@@ -104,10 +104,10 @@ HotDateRails.config do |config|
   config.minute_grid = "15"
   config.second_grid = "30"
   config.date_format = "MM d, yy"
-	config.time_format = "h:mm tt"
+  config.time_format = "h:mm tt"
 end
 ```
-\* *Note that if you override the date and/or time format you should also edit the corresponding entries in your locale(s) file(s)*
+\* *Note that if you override the date and/or time format you should also edit the corresponding entries in your locale file(s)*
 
 #### <a name="locales"></a>Base Set of included locale formats ####
 ```YAML
@@ -127,7 +127,12 @@ en:
       uc_merid: "%-l:%M %p"
 ```
 
+#### Credits ####
+- This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
+
 ##### TODO #####
-- see if we can/should add these to hot_date_rails too so user doesn't need to
+- see if we can add these js requires in the engine so user doesn't need to
  - //= require jquery
  - //= require jquery_ujs
+- add convenience methods for common formats
+- add method that accepts both a picker format and a strftime format so custom locale formats don't need to be added by the user
