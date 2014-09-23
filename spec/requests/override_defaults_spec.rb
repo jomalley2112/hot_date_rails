@@ -128,7 +128,6 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 				end
 				it "fills in the datetime field with datetime formatted like January 1, 2001 1:59 pm " do
 					find("#epoch").click
-					#binding.pry
 		    	click_link("1")
 		    	find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0)
 		    	find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0)

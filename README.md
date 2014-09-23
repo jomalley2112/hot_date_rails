@@ -1,4 +1,5 @@
 # HotDateRails #
+[![Gem Version](https://badge.fury.io/rb/hot_date_rails.svg)](http://badge.fury.io/rb/hot_date_rails)
 
 #### Description ####
 There's a ton of time/date/datetime picker gems out, but I couldn't find one that worked for what I needed. This one is a single gem that allows you to add date only, time only and datetime pickers to your forms. This gem also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
@@ -11,6 +12,7 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
   - `//= require jquery_ujs`
 - In application.js add `//=require hot_date_rails`
 - In application.css add ` *=require hot_date_rails`
+*Note: If you get an initialization error when statring server you may need to temporarily comment out the spring gem from your Gemfile `#gem 'spring', group: :development`*. We're looking into this currently.
 
 #### Form Helper Usage ####
 ```ruby
@@ -131,6 +133,7 @@ en:
 - This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 
 ##### TODO #####
+- edit hd_label to accept and pass other params to label method
 - see if we can add these js requires in the engine so user doesn't need to
  - //= require jquery
  - //= require jquery_ujs
