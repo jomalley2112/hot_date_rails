@@ -5,20 +5,21 @@
 There's a ton of time/date/datetime picker gems out, but I couldn't find one that worked for what I needed. This one is a single gem that allows you to add date only, time only and datetime pickers to your forms. This gem also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
 
 #### Setup ####
-- Add `gem 'hot_date_rails', :github => 'jomalley2112/hot_date_rails'` to Gemfile
+- Add `gem 'hot_date_rails'` to Gemfile
 - run `bundle install`
 - make sure application.js already contains the following
   - `//= require jquery`
   - `//= require jquery_ujs`
 - In application.js add `//=require hot_date_rails`
 - In application.css add ` *=require hot_date_rails`
-*Note: If you get an initialization error when statring server you may need to temporarily comment out the spring gem from your Gemfile `#gem 'spring', group: :development`*. We're looking into this currently.
 
 #### Form Helper Usage ####
 ```ruby
-#takes the same arguments as the Rails label_tag method
 form_object.hd_label(name, content_or_options=nil, options=nil, &block)
+```
+- takes the same arguments as the Rails label_tag method
 
+```ruby
 form_object.date_picker(name, options={}, locale_format=nil)
 form_object.time_picker(name, options={}, locale_format=nil)
 form_object.datetime_picker(name, options={}, locale_format=nil)
@@ -134,6 +135,12 @@ en:
       uc_merid: "%-l:%M %p"
 ```
 
+#### To run tests ####
+```
+rspec spec --tag ~@defaults
+rspec spec --tag @defaults --order default
+```
+
 #### Credits ####
 - This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 
@@ -144,3 +151,4 @@ en:
  - //= require jquery_ujs
 - add convenience methods for common formats
 - add method that accepts both a picker format and a strftime format so custom locale formats don't need to be added by the user
+
