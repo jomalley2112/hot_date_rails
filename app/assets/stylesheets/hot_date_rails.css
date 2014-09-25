@@ -1,5 +1,6 @@
  
  /*
- *= require_tree ./vendors
+ *= require jquery-ui
+ *= require jquery-ui-timepicker-addon
  *= require_tree ./hot_date_rails
 */
