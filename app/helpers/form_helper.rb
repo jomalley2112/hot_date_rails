@@ -15,8 +15,8 @@ module FormHelper
 		end
 
 		
-		def hd_label(attr)
-			label_tag attr
+		def hd_label(name = nil, content_or_options = nil, options = nil, &block)
+			label_tag name, content_or_options, options, &block
 		end
 
 	  private

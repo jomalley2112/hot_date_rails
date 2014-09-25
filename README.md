@@ -16,6 +16,9 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 
 #### Form Helper Usage ####
 ```ruby
+#takes the same arguments as the Rails label_tag method
+form_object.hd_label(name, content_or_options=nil, options=nil, &block)
+
 form_object.date_picker(name, options={}, locale_format=nil)
 form_object.time_picker(name, options={}, locale_format=nil)
 form_object.datetime_picker(name, options={}, locale_format=nil)
@@ -27,7 +30,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 
 #### Example Form Helper Calls ####
 ```RHTML
-<!--Using Default values-->
+<!--Using just default values-->
 <%= form_for @schedule do |f| %>
 <table>
 	<tr>
@@ -59,7 +62,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 		<td><%= f.time_picker :suppertime, { :time_format => "h:mm tt" }, :lc_merid %></td>
 	</tr>
 	<tr>
-		<td><%= f.hd_label :beer_oclock %></td>
+		<td><%= f.hd_label :beer_oclock, "Time for beer: " %></td>
 		<td><%= f.time_picker :beer_oclock, { :time_format => "h:mm TT" }, :uc_merid %></td>
 	</tr>
 	<tr>
@@ -73,7 +76,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 </table>
 ```
 
-#### <a name="fho"></a>Form Helper Options ####
+#### <a name="fho"></a>Form helper picker methods options ####
 - :date_format - datepicker [format string](http://api.jqueryui.com/datepicker/)
 	- default: "mm/dd/yy"
 - :time_format - timepicker [format string](http://trentrichardson.com/examples/timepicker/)
@@ -82,18 +85,20 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 - :hd_opts - options to be applied to the picker object
 
 ##### Common :hd_opts
-|                  | DatePicker | TimePicker | DatetimePicker |
-| --------------   | ---------- | ---------- | -------------- |
-| change_month     |     X      |            |                |
-| change_year      |     X      |            |                |
-| alt_time_format* |            |     X      |       X        |
-| hour_grid        |            |     X      |       X        |
-| minute_grid      |            |     X      |       X        |
-| second_grid      |            |     X      |       X        |
-| separator        |            |            |       X        |
-| current_text     |     X      |     X      |       X        |
-| close_text       |     X      |     X      |       X        |
-| time_suffix      |            |     X      |       X        |
+|                   | DatePicker | TimePicker | DatetimePicker |
+| --------------    | ---------- | ---------- | -------------- |
+| change_month      |     X      |            |                |
+| change_year       |     X      |            |                |
+| alt_time_format*  |            |     X      |       X        |
+| hour_grid         |            |     X      |       X        |
+| minute_grid       |            |     X      |       X        |
+| second_grid       |            |     X      |       X        |
+| separator         |            |            |       X        |
+| current_text      |     X      |     X      |       X        |
+| close_text        |     X      |     X      |       X        |
+| time_suffix       |            |     X      |       X        |
+| show_button_panel |     X      |     X      |       X        |
+
 
 
 \* *alt_time_format should be overridden when you need more precision than minutes for a datetime picker (e.g. "HH:mm:ss")*
@@ -133,7 +138,7 @@ en:
 - This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 
 ##### TODO #####
-- edit hd_label to accept and pass other params to label method
+- change the jquery-ui.css to SASS and use the image-url helper method?
 - see if we can add these js requires in the engine so user doesn't need to
  - //= require jquery
  - //= require jquery_ujs
