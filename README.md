@@ -88,8 +88,8 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 ##### Common :hd_opts
 |                   | DatePicker | TimePicker | DatetimePicker |
 | --------------    | ---------- | ---------- | -------------- |
-| change_month      |     X      |            |                |
-| change_year       |     X      |            |                |
+| change_month      |     X      |            |       X        |
+| change_year       |     X      |            |       X        |
 | alt_time_format*  |            |     X      |       X        |
 | hour_grid         |            |     X      |       X        |
 | minute_grid       |            |     X      |       X        |
@@ -121,7 +121,7 @@ end
 ```YAML
 en:
 	date:
-    formats:
+  	formats:
       default: "%m/%d/%Y"
       full_month: "%B %-d, %Y"
       full_day_month: "%A %B %-d, %Y"
