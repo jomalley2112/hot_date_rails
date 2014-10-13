@@ -90,6 +90,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 | --------------    | ---------- | ---------- | -------------- |
 | change_month      |     X      |            |       X        |
 | change_year       |     X      |            |       X        |
+| year_range        |     X      |            |       X        |
 | alt_time_format*  |            |     X      |       X        |
 | hour_grid         |            |     X      |       X        |
 | minute_grid       |            |     X      |       X        |
@@ -99,6 +100,7 @@ form_object.datetime_picker(name, options={}, locale_format=nil)
 | close_text        |     X      |     X      |       X        |
 | time_suffix       |            |     X      |       X        |
 | show_button_panel |     X      |     X      |       X        |
+| default_date      |     X      |     X      |       X        |
 
 
 
