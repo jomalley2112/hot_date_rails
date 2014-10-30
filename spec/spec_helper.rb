@@ -6,6 +6,7 @@ require 'factory_girl_rails'
 require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
+require 'pry-rails'
 
 Rails.backtrace_cleaner.remove_silencers!
 
