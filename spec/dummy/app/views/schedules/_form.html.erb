@@ -26,7 +26,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :beer_oclock, "Time for beer yet?" %></td>
-		<td><%= f.hd_picker :beer_oclock, { :time_format => "h:mm TT" }, :uc_merid %></td>
+		<td><%= f.time_picker :beer_oclock, { :time_format => "h:mm TT" }, :uc_merid %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :christmas %></td>
@@ -34,11 +34,11 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :easter %></td>
-		<td><%= f.hd_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
+		<td><%= f.date_picker :easter, { :date_format => "DD MM d, yy", html: { style: "width: 200px;" } }, :full_day_month %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :epoch %></td>
-		<td><%= f.hd_picker :epoch, { date_format: "m/d/yy", time_format: "HH:mm:ss", hd_opts: {alt_time_format: "HH:mm:ss" } }, :datetime_w_seconds %></td>
+		<td><%= f.datetime_picker :epoch, { date_format: "m/d/yy", time_format: "HH:mm:ss", hd_opts: {alt_time_format: "HH:mm:ss" } }, :datetime_w_seconds %></td>
 	</tr>
 	<tr>
 		<td></td>
