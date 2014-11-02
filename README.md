@@ -26,7 +26,11 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 - *options* - see the [Form Helper Options](#fho) section below
 - *locale_format* - the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
 	- A [base set](#locales) of locale_formats are included for english and custom formats can be added.
-- *cls* - the css class name for the picker object created. This is used solely for the purpose of attaching the correct type of picker to the field. (To specify your own css classes for formatting you can uses the options hash.) Valid values are "date", "time" and "datetime". When not specified hd_picker gets this from the type of the column specified.
+- *cls* - the css class name for the picker object created. This is used solely for the purpose of attaching the correct type of picker to the field. (To specify your own css classes just for formatting you can add them to the options hash.) Valid values are "date", "time" and "datetime". When not specified hd_picker gets this from the type of the column specified.\* \*\*
+
+\* *The only good reason for setting this parameter is if you have a datetime field and you want the field to just show the date or just show the time*
+
+\*\* *If you do specify the cls parameter keep in mind that you will probably need to add another format under the correct branch in the locale file and specify that format in the locale_file parameter*
 
 #### Example Form Helper Calls ####
 ```RHTML

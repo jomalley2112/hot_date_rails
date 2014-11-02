@@ -3,10 +3,8 @@ module FormHelper
 		include ActionView::Helpers::FormTagHelper
 		extend HotDateRails::Utils
 		
-		deprecate :date_picker, :hd_picker
-		deprecate :time_picker, :hd_picker
-		deprecate :datetime_picker, :hd_picker
-		
+		deprecate_consolidated(%i(date_picker time_picker datetime_picker), :hd_picker)
+
 	  def hd_picker(attr, opts={}, locale_format=nil, cls=nil)
 	  	col_type = object.class.columns_hash[attr.to_s].type
 	  	#Picker css class...if not explicitly specified get it from the type

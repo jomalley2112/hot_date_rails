@@ -5,4 +5,7 @@ module HotDateRails::Utils
 			send(new_mtd, *args, &block)
 		end
 	end
+	def deprecate_consolidated(dep_mtds, new_mtd)
+		dep_mtds.each { |mtd| deprecate(mtd, new_mtd) }
+	end
 end

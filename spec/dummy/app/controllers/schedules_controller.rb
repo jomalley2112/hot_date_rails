@@ -42,6 +42,6 @@ class SchedulesController < ApplicationController
 	def schedule_params
 		params.require(:schedule).permit(:name, :lunchtime, :apocalypse, 
 										:birthday, :alarm_setting, :epoch, :christmas, :suppertime, :beer_oclock,
-										:sleepytime, :party_time, :easter)
+										:sleepytime, :party_time, :easter, :date_in_time)
 	end
 end

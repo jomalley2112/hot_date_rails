@@ -39,6 +39,14 @@
 		<td><%= f.hd_picker :epoch %></td>
 	</tr>
 	<tr>
+		<td><%= f.hd_label :date_in_time %></td>
+		<td><%= f.hd_picker :date_in_time, {}, :date_only, "datepicker" %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :time_of_date %></td>
+		<td><%= f.hd_picker :time_of_date, {}, :time_only, "timepicker" %></td>
+	</tr>
+	<tr>
 		<td><%= f.submit %></td>
 	</tr>
 </table>

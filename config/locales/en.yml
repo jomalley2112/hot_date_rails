@@ -12,3 +12,5 @@ en:
       w_seconds: "%H:%M:%S"
       lc_merid: "%-l:%M %P"
       uc_merid: "%-l:%M %p"
+      date_only: "%m/%d/%Y"
+      time_only: "%H:%M"

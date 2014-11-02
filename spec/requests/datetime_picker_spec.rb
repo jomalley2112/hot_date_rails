@@ -58,4 +58,36 @@ RSpec.describe "Datetime Picker", :type => :request do
   	end
 
   end
+
+  describe "specify jQuery widget class name", :js => true do
+    before { visit '/custom_schedules/new' }
+    describe "just date" do
+      it "shows just the date and only the date" do
+        find("#date_in_time").click
+        page.should have_selector("table.ui-datepicker-calendar")
+        page.should_not have_selector("div.ui-timepicker-div")
+      end
+      it "shows the date that we chose in the correct localized format" do
+        @curr_date = Time.now
+        @schedule = FactoryGirl.create(:schedule, date_in_time: @curr_date.to_date)
+        visit "/custom_schedules\/#{@schedule.id}\/edit"
+        find("#date_in_time").value.should eq I18n.localize(@curr_date.to_date)
+      end
+    end
+
+    describe "just time" do
+      it "shows just the time and only the time" do
+        find("#time_of_date").click
+        page.should have_selector("div.ui-timepicker-div")
+        page.should_not have_selector("table.ui-datepicker-calendar")
+      end
+      it "shows the date that we chose in the correct localized format" do
+        @curr_date = Time.now
+        @schedule = FactoryGirl.create(:schedule, time_of_date: @curr_date)
+        visit "/custom_schedules\/#{@schedule.id}\/edit"
+        find("#time_of_date").value.should eq @curr_date.strftime("%H:%M")
+      end
+    end
+    
+  end
 end
