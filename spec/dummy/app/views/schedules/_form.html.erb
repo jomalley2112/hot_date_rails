@@ -6,23 +6,23 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :birthday %></td>
-		<td><%= f.date_picker :birthday %></td>
+		<td><%= f.hd_picker :birthday %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :lunchtime %></td>
-		<td><%= f.time_picker :lunchtime %></td>
+		<td><%= f.hd_picker :lunchtime %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :apocalypse %></td>
-		<td><%= f.datetime_picker :apocalypse %></td>
+		<td><%= f.hd_picker :apocalypse %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :alarm_setting %></td>
-		<td><%= f.time_picker :alarm_setting, { :time_format => "HH:mm:ss", hd_opts: {:hour_grid => "12"} }, :w_seconds %></td>
+		<td><%= f.hd_picker :alarm_setting, { :time_format => "HH:mm:ss", hd_opts: {:hour_grid => "12"} }, :w_seconds %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :suppertime %></td>
-		<td><%= f.time_picker :suppertime, { :time_format => "h:mm tt" }, :lc_merid %></td>
+		<td><%= f.hd_picker :suppertime, { :time_format => "h:mm tt" }, :lc_merid %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :beer_oclock, "Time for beer yet?" %></td>
@@ -30,7 +30,7 @@
 	</tr>
 	<tr>
 		<td><%= f.hd_label :christmas %></td>
-		<td><%= f.date_picker :christmas, { :date_format => "MM d, yy" }, :full_month %></td>
+		<td><%= f.hd_picker :christmas, { :date_format => "MM d, yy" }, :full_month %></td>
 	</tr>
 	<tr>
 		<td><%= f.hd_label :easter %></td>

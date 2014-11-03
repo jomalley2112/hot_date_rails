@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140909013705) do
+ActiveRecord::Schema.define(version: 20141101193750) do
 
   create_table "schedules", force: true do |t|
     t.string   "name"
@@ -28,6 +28,8 @@ ActiveRecord::Schema.define(version: 20140909013705) do
     t.time     "sleepytime"
     t.time     "party_time"
     t.date     "easter"
+    t.datetime "date_in_time"
+    t.datetime "time_of_date"
   end
 
 end
