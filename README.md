@@ -150,7 +150,6 @@ rspec spec --tag @defaults --order default
 - This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 
 ##### TODO #####
-- Test the new param "cls" for the new hd_picker() method
 - see if we can add these js requires in the engine so user doesn't need to
  - //= require jquery
  - //= require jquery_ujs
