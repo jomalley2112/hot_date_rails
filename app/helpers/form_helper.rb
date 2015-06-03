@@ -3,10 +3,12 @@ module FormHelper
 		include ActionView::Helpers::FormTagHelper
 		extend HotDateRails::Utils
 		
-		deprecate_consolidated(%i(date_picker time_picker datetime_picker), :hd_picker)
+		deprecate(:date_picker, :time_picker, :datetime_picker, :hd_picker)
+		# deprecate_consolidated(%i(date_picker time_picker datetime_picker), :hd_picker)
+
 
 	  def hd_picker(attr, opts={}, locale_format=nil, cls=nil)
-	  	col_type = object.class.columns_hash[attr.to_s].type
+	  	col_type = column_type(attr)
 	  	#Picker css class...if not explicitly specified get it from the type
 	  	cls ||= col_type.to_s + "picker" 
 	  	#need to specify datetime in locale file because rails thinks datetime is time
@@ -25,6 +27,17 @@ module FormHelper
 		  input_attrs = InputAttrs.new(attr, cls, opts)
 	    text_field_tag("#{attr}", (value || ""), input_attrs) + \
 	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" })
+	  end
+
+	  def column_type(attr)
+	  	if object.class.respond_to?(:columns_hash)
+	  		object.class.columns_hash[attr.to_s].type #AR
+	  	elsif object.class.respond_to?(:columns)
+	  		object.class.columns[attr.to_s].type #No clue...trying to get type for Mongoid
+	  	else
+	  		:date
+	  	end
+	  			
 	  end
 
 	end
