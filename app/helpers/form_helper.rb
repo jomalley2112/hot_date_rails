@@ -32,8 +32,9 @@ module FormHelper
 	  def column_type(attr)
 	  	if object.class.respond_to?(:columns_hash)
 	  		object.class.columns_hash[attr.to_s].type #AR
-	  	elsif object.class.respond_to?(:columns)
-	  		object.class.columns[attr.to_s].type #No clue...trying to get type for Mongoid
+	  	elsif object.class.respond_to?(:field)
+	  		# binding.pry
+	  		object.class.field(attr).type #trying to get type for Mongoid
 	  	else
 	  		:date
 	  	end
