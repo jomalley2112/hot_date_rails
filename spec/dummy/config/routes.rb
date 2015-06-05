@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get 'custom_schedules/new' => 'schedules#new_custom'
   get 'custom_schedules/:id/edit' => 'schedules#edit_custom'
 
-  resources :no_sql_models, only: [:new] #, :index
+  resources :no_sql_models, only: [:new, :index]
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
