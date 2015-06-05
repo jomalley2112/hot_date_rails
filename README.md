@@ -16,10 +16,8 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 #### Form Helper Usage ####
 ```ruby
 form_object.hd_label(name, content_or_options=nil, options=nil, &block)
-```
-- takes the same arguments as the Rails label_tag method
+#takes the same arguments as the Rails label_tag method
 
-```ruby
 form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 ```
 - *name* - a symbol representing the form field
@@ -52,6 +50,27 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 </table>
 <% end %>
 ```
+
+#### Example Form Helper Calls when Not using ActiveRecord ####
+```RHTML
+<%= form_for @schedule do |f| %>
+<table>
+	<tr>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse %></td>
+	</tr>
+</table>
+<% end %>
+```
+
 
 ```RHTML
 <!--Using some Options-->
