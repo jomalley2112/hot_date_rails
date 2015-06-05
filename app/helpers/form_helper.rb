@@ -3,10 +3,19 @@ module FormHelper
 		include ActionView::Helpers::FormTagHelper
 		extend HotDateRails::Utils
 		
-		deprecate_consolidated(%i(date_picker time_picker datetime_picker), :hd_picker)
+		# deprecate(:date_picker, :time_picker, :datetime_picker, :hd_picker)
 
-	  def hd_picker(attr, opts={}, locale_format=nil, cls=nil)
-	  	col_type = object.class.columns_hash[attr.to_s].type
+		#handle type-specific calls (to :date_picker, :time_picker and :datetime_picker)
+		def method_missing(method, *args)
+			cls = $1 if method =~ /(.*)_picker/
+			return super unless cls #not a valid picker method call
+			args = (args + Array.new(3)).slice(0..2).push("#{cls}picker") #pad args to 3 and add cls attr to end
+			send(:hd_picker, *args)
+		end
+
+	  def hd_picker(attr, opts=nil, locale_format=nil, cls=nil)
+	  	opts ||= {}
+	  	col_type = column_type(attr)
 	  	#Picker css class...if not explicitly specified get it from the type
 	  	cls ||= col_type.to_s + "picker" 
 	  	#need to specify datetime in locale file because rails thinks datetime is time
@@ -27,6 +36,13 @@ module FormHelper
 	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" })
 	  end
 
+	  def column_type(attr)
+	  	if object.class.respond_to?(:columns_hash)
+	  		object.class.columns_hash[attr.to_s].type #AR
+	  	else
+	  		:datetime
+	  	end
+	  end
 	end
 
 	class InputAttrs < Hash
