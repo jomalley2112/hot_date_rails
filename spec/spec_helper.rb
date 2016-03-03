@@ -7,7 +7,7 @@ require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'pry-rails'
-require 'mongoid'
+# require 'mongoid'
 
 Rails.backtrace_cleaner.remove_silencers!
 
