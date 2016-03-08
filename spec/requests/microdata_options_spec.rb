@@ -42,7 +42,7 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	  		find("button.ui-datepicker-close").text.should eq "Set"
 	  	end
 	  	it "allows us to add a suffix after the time displayed" do
-	  		find("dd.ui_tpicker_time").text.should match(/.*\so\'clock/)
+	  		find(".ui_tpicker_time_input").value.should match(/.*\so\'clock/)
 	  	end
 	  end
 	end

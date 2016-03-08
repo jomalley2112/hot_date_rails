@@ -17,8 +17,8 @@ RSpec.describe "Time Picker", :type => :request do
 	    
 	    it "fills in  the time field correctly and disappears when 'Done' button clicked" do
 	    	find("#lunchtime").click
-	    	find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0) #1 pm
-	    	find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 min
+	    	find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
+	    	find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
 	    	find("button.ui-datepicker-close").click
 	    	find("#lunchtime").value.should eq "13:15"
 	    end
@@ -35,14 +35,14 @@ RSpec.describe "Time Picker", :type => :request do
       
       it "displays like '12:00 am' when specified" do
       	find("#suppertime").click
-      	find("dd.ui_tpicker_time").text.should match('12:00 am')
+      	find(".ui_tpicker_time_input").value.should match('12:00 am')
       end
 
       describe "updated time is properly persisted in the database" do
-      	it "updates data prpperly when lowercase meridian is specified" do
+      	it "updates data properly when lowercase meridian is specified" do
       		find("#suppertime").click
-      		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0) #1 pm
-	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 min
+      		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
+	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
 	    		find("button.ui-datepicker-close").click
 	    		click_button("Create Schedule")
 	    		sleep 1
@@ -50,8 +50,9 @@ RSpec.describe "Time Picker", :type => :request do
       	end
       	it "updates data prpperly when uppercase meridian is specified" do
       		find("#beer_oclock").click
-      		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(62, 0) #1 pm
-	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(27, 0) #15 min
+      		# binding.pry
+      		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
+	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
 	    		find("button.ui-datepicker-close").click
 	    		click_button("Create Schedule")
 	    		sleep 1
@@ -88,11 +89,11 @@ RSpec.describe "Time Picker", :type => :request do
 		describe "time value is correctly indicated on the timepicker widget" do
 		  it "displays default time format" do
 		  	find("#lunchtime").click
-		  	find("dd.ui_tpicker_time").text.should match(I18n.localize(@curr_date.to_time))
+		  	find("input#lunchtime").value.should match(I18n.localize(@curr_date.to_time))
 		  end
 		  it "displays time with seconds format" do
 		  	find("#alarm_setting").click
-		  	find("dd.ui_tpicker_time").text.should match(I18n.localize(@curr_date.to_time, format: :w_seconds))
+		  	find("input#alarm_setting").value.should match(I18n.localize(@curr_date.to_time, format: :w_seconds))
 		  end
 		  describe "12-hour clock and lower case meridian format" do
 		  	it "displays single-digit hour" do
@@ -100,14 +101,14 @@ RSpec.describe "Time Picker", :type => :request do
 		  		@schedule = FactoryGirl.create(:schedule, suppertime: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#suppertime").click
-		  		find("dd.ui_tpicker_time").text.should match(I18n.localize(date_obj, format: :lc_merid))
+		  		find("input#suppertime").value.should match(I18n.localize(date_obj, format: :lc_merid))
 		  	end
 		  	it "displays double-digit hour" do
 		  		date_obj = DateTime.strptime("11:47 pm", "%H:%M %P")
 		  		@schedule = FactoryGirl.create(:schedule, suppertime: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#suppertime").click
-		  		find("dd.ui_tpicker_time").text.should match(I18n.localize(date_obj, format: :lc_merid))
+		  		find("input#suppertime").value.should match(I18n.localize(date_obj, format: :lc_merid))
 		  	end
 		  end
 
@@ -117,14 +118,14 @@ RSpec.describe "Time Picker", :type => :request do
 		  		@schedule = FactoryGirl.create(:schedule, beer_oclock: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#beer_oclock").click
-		  		find("dd.ui_tpicker_time").text.should match(I18n.localize(date_obj, format: :uc_merid))
+		  		find("input#beer_oclock").value.should match(I18n.localize(date_obj, format: :uc_merid))
 		  	end
 		  	it "displays double-digit hour" do
 		  		date_obj = DateTime.strptime("11:47 pm", "%H:%M %p")
 		  		@schedule = FactoryGirl.create(:schedule, beer_oclock: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#beer_oclock").click
-		  		find("dd.ui_tpicker_time").text.should match(I18n.localize(date_obj, format: :uc_merid))
+		  		find("input#beer_oclock").value.should match(I18n.localize(date_obj, format: :uc_merid))
 		  	end
 		  end
 
