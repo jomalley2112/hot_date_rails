@@ -18,16 +18,16 @@ Gem::Specification.new do |s|
                   expected by the picker."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["spec/**/*"]
+  # s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
+  # s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", "~> 4.1.1" #, "~> 4.1.5"
+  s.add_dependency "rails", "~> 4.2"
   s.add_dependency "coffee-rails"
   s.add_dependency 'jquery-rails'
   
   s.add_development_dependency "sqlite3"
   s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'capybara', '~> 2.4.4'
+  s.add_development_dependency 'capybara'
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'selenium-webdriver' #, "~> 2.45.0"

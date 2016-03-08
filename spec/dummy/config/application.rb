@@ -13,7 +13,7 @@ require "hot_date_rails"
 module Dummy
   class Application < Rails::Application
     config.time_zone = 'Eastern Time (US & Canada)'
-	  config.serve_static_assets = true
+	  config.serve_static_files = true
   end
 end
 
