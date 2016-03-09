@@ -9,6 +9,7 @@ require "sprockets/railtie"
 
 Bundler.require(*Rails.groups)
 require "hot_date_rails"
+require 'mongoid'
 
 module Dummy
   class Application < Rails::Application
