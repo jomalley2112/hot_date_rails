@@ -11,10 +11,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141101193750) do
+ActiveRecord::Schema.define(version: 20160714012056) do
 
-  create_table "schedules", force: true do |t|
-    t.string   "name"
+  create_table "people", force: :cascade do |t|
+    t.string "name"
+  end
+
+  create_table "schedules", force: :cascade do |t|
+    t.string   "name",          limit: 255
     t.date     "birthday"
     t.time     "lunchtime"
     t.datetime "apocalypse"
@@ -30,6 +34,7 @@ ActiveRecord::Schema.define(version: 20141101193750) do
     t.date     "easter"
     t.datetime "date_in_time"
     t.datetime "time_of_date"
+    t.integer  "person_id"
   end
 
 end

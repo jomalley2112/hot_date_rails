@@ -1,7 +1,11 @@
 FactoryGirl.define do
 
+	factory :person do
+	  sequence(:name) { |n| "John Doe ##{n}" }
+	end
+
   factory :schedule do
-    sequence(:name) { |n| "John_#{n}" }
+    sequence(:name) { |n| "Schedule ##{n}" }
     birthday Time.now
     lunchtime Time.now
     apocalypse Time.now

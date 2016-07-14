@@ -1,0 +1,12 @@
+<table>
+<%= form_for @person do |person| %>
+	<%= person.fields_for :schedules do |schedule| %>
+		<tr>
+        <td><%= schedule.hd_label :apocalypse %></td>
+        <td><%= schedule.hd_picker :apocalypse %></td><!-- datetime -->
+    </tr>
+	<% end %>
+	<tr><%= person.button "Submit" %></tr>
+<% end %>
+</table>
+

@@ -32,7 +32,7 @@ module FormHelper
 	  	value = object.send(attr) if object.respond_to? attr
 	  	value = I18n.localize(value, format: locale_format) if value.present?
 	  	input_attrs = InputAttrs.new(attr, cls, opts)
-	  	text_field_tag("#{attr}", (value || ""), input_attrs.to_h) + \
+	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (value || ""))) + \
 	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" })
 	  end
 
