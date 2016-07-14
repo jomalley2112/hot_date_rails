@@ -60,3 +60,7 @@ module CapybaraSeleniumExtension
 end
 ::Capybara::Selenium::Node.send :include, CapybaraSeleniumExtension
 ::Capybara::Node::Element.send :include, CapybaraExtension
+
+Capybara.register_driver :selenium do |app|
+  Capybara::Selenium::Driver.new(app, :browser => :chrome)
+end

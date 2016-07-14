@@ -11,6 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require jquery-ui
  *= require hot_date_rails
  *= require_self
  */

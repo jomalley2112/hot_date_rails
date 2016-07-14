@@ -18,7 +18,7 @@ ActiveRecord::Schema.define(version: 20160714012056) do
   end
 
   create_table "schedules", force: :cascade do |t|
-    t.string   "name",          limit: 255
+    t.string   "name"
     t.date     "birthday"
     t.time     "lunchtime"
     t.datetime "apocalypse"

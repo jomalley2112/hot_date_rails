@@ -1,4 +1,6 @@
-$(document).on 'ready page:load', ->
+
+
+loadDatePicker = () ->
   $("input.datepicker").each (i) ->
     defOpts = {
     altFormat: "yy-mm-dd"
@@ -6,24 +8,22 @@ $(document).on 'ready page:load', ->
     changeYear: true
     changeMonth: true}
     setDatePickerOptions( this, defOpts )
-
-$(document).on 'ready page:load', ->
-  $("input.datetimepicker").each (i) ->
-    defOpts = {altField: $(this).next()
-    altFieldTimeOnly: false
-    altFormat: "yy-mm-dd"
-    altTimeFormat: "HH:mm"}
-    setPickerOptions( this, defOpts )
-
-$(document).on 'ready page:load', ->
+  
+loadTimePicker = () ->
   $("input.timepicker").each (i) ->
     defOpts = {timeOnly: true
     altField: $(this).next()
     altFieldTimeOnly: false
     defaultValue: this.value}
     setPickerOptions( this, defOpts )
-    
-      
+
+Window.bindHDPickers = () ->
+  loadDatePicker()
+  loadTimePicker()
+
+$(document).on 'ready page:load', ->
+  Window.bindHDPickers()
+  
 setPickerOptions = (input, defOpts) ->
   userOpts = $(input).data()
   allOpts = $.extend({}, defOpts, userOpts)

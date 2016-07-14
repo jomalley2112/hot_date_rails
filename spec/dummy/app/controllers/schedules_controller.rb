@@ -1,4 +1,9 @@
 class SchedulesController < ApplicationController
+
+	def index
+		@schedules = Schedule.all
+	end
+
 	def new
 		@schedule = Schedule.new
 	end
@@ -6,6 +11,11 @@ class SchedulesController < ApplicationController
 
 	def edit
 		@schedule = Schedule.find(params[:id])
+	end
+
+	def edit_in_modal
+		@schedule = Schedule.find(params[:id])
+		render :edit, layout: false
 	end
 
 	def create
