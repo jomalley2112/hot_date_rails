@@ -1,0 +1,14 @@
+<table>
+	<tr>
+		<td></td>
+		<td></td>
+	</tr>
+<% @schedules.each do |s| %>
+	<tr>
+		<td><%= s.name %></td>
+		<td><%= link_to "Edit", "#", id: "open_edit_modal" %></td>
+	</tr>
+<% end %>
+</table>
+
+<div id="modal_dialog"></div>

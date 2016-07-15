@@ -18,6 +18,11 @@ class SchedulesController < ApplicationController
 		render :edit, layout: false
 	end
 
+	def edit_with_index
+		@schedule = Schedule.find(params[:id])
+		@schedules = Schedule.all
+	end
+
 	def create
 		@schedule = Schedule.new(schedule_params)
 		if @schedule.save

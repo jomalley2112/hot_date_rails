@@ -1,7 +1,7 @@
 # Start application.js
 #
 #= require jquery2
-
+#= require jquery-ui
 #= require jquery_ujs
 #= require hot_date_rails
 #= require_tree .
@@ -23,8 +23,4 @@ $ ->
     $( "#modal_dialog" ).load("/schedules/1/edit-in-modal", ->
     	Window.bindHDPickers()
     	)
-  )
-
-
-#had to remove this line because it was causing a js error when trying to call .dialog()
-# require jquery-ui 
+  ) 
