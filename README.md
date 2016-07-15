@@ -7,8 +7,9 @@ There's a ton of time/date/datetime picker gems out, but I couldn't find one tha
 #### Setup ####
 - Add `gem 'hot_date_rails'` to Gemfile
 - run `bundle install`
-- make sure application.js already contains the following
+- make sure application.js contains the following (and that the assets are available to be referenced)
   - `//= require jquery`
+  - `//= require jquery-ui`
   - `//= require jquery_ujs`
 - In application.js add `//= require hot_date_rails`
 - In application.css add ` *= require hot_date_rails`
@@ -157,6 +158,14 @@ en:
       w_seconds: "%H:%M:%S"
       lc_merid: "%-l:%M %P"
       uc_merid: "%-l:%M %p"
+```
+
+#### Dynamically added inputs ###
+If you're dynamically adding inputs to the DOM using the helpers (possibly for a modal dialog) you must call the Window.bindHDPickers() function.
+```coffee-script
+$( "#modal_dialog" ).load("/schedules/1/edit-in-modal", ->
+    Window.bindHDPickers()
+)
 ```
 
 #### To run tests ####
