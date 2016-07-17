@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hot_date_rails (1.5.2)
+    hot_date_rails (1.5.3)
       coffee-rails
       jquery-rails
       rails (>= 4.1.15, < 5.0)
