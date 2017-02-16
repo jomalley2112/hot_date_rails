@@ -8,9 +8,14 @@ RSpec.describe "Time Picker", :type => :request do
    	describe "Standard format" do
       it "is displayed when time field receives focus and is hidden 
   				when time field loses focus" do
+  			sleep 1
+	    	page.execute_script("$('#lunchtime').focus()")
 	    	find("#lunchtime").click
+	    	sleep 1
+	    	# binding.pry
 	    	page.should have_selector("#ui-datepicker-div", visible: true)
-	    	find("#schedule_name").click
+	    	# find("#schedule_name").click
+	    	page.execute_script("$('#lunchtime').blur()")
 	    	sleep 1
 	    	page.should have_no_selector("#ui-datepicker-div", visible: true)
 	    end

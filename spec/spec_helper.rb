@@ -9,6 +9,14 @@ require 'capybara/rspec'
 require 'pry-rails'
 # require 'mongoid'
 
+# ENV['RAILS_ENV'] ||= 'test'
+# require File.expand_path('../../config/environment', __FILE__)
+# # Prevent database truncation if the environment is production
+# abort("The Rails environment is running in production mode!") if Rails.env.production?
+# require 'spec_helper'
+# require 'rspec/rails'
+# require 'capybara/rails'
+
 Rails.backtrace_cleaner.remove_silencers!
 
 # Load support files
