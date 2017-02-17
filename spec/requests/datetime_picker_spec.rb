@@ -4,6 +4,7 @@ RSpec.describe "Datetime Picker", :type => :request do
   describe "Create New", :js => true do
     before(:each) do
   	  visit new_schedule_path
+      find("form").click #needed to set focus so events are picked up
   	end
   
 	  it "is displayed when datetime field receives focus and hidden 
@@ -15,7 +16,7 @@ RSpec.describe "Datetime Picker", :type => :request do
     	page.should have_no_selector("#ui-datepicker-div", visible: true)
     end
     
-    it "fills in the datetime field correctly and disappears when 'Done' button clicked" do
+    it "fills in the datetime field correctly and disappears when 'Done' button clicked", slider: true do
     	find("#apocalypse").click
     	curr_date = Time.now
     	click_link("1")
@@ -27,7 +28,7 @@ RSpec.describe "Datetime Picker", :type => :request do
     end
 
     describe "Alternate Datetime formats" do
-      it "shows datetime with seconds" do
+      it "shows datetime with seconds", slider: true do
         find("#epoch").click
         curr_date = Time.now
         click_link("1")
@@ -38,7 +39,6 @@ RSpec.describe "Datetime Picker", :type => :request do
         find("#epoch").value
           .should eq "#{curr_date.month}/1/#{curr_date.year} 13:15:15"
         click_button("Create Schedule")
-        #binding.pry
         find("#epoch").value
           .should eq "#{curr_date.month}/1/#{curr_date.year} 13:15:15"
       end
@@ -60,7 +60,10 @@ RSpec.describe "Datetime Picker", :type => :request do
   end
 
   describe "specify jQuery widget class name", :js => true do
-    before { visit '/custom_schedules/new' }
+    before do 
+      visit '/custom_schedules/new'
+      find("body").click
+    end
     describe "just date" do
       it "shows just the date and only the date" do
         find("#date_in_time").click

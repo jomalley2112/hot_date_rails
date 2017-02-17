@@ -4,6 +4,7 @@ RSpec.describe "Date Picker", :type => :request do
   describe "Create New", :js => true do
     before(:each) do
   	  visit new_schedule_path
+      find("form").click #needed to set focus so events are picked up
   	end
     
   	it "is displayed when date field receives focus and hidden 
@@ -81,6 +82,7 @@ RSpec.describe "Date Picker", :type => :request do
 	    		@curr_date = Time.now
 		  	  @schedule = FactoryGirl.create(:schedule, birthday: "#{@curr_date.year}-11-11")
 		  	  visit edit_schedule_path(@schedule)
+          find("body").click
 	      	find("#birthday").click
 	      	find("select.ui-datepicker-month").value.should eq "10" #zero-based value for November
 	      	find("select.ui-datepicker-year").value.should eq @curr_date.year.to_s
@@ -92,6 +94,7 @@ RSpec.describe "Date Picker", :type => :request do
 	    		@curr_date = Time.now
 		  	  @schedule = FactoryGirl.create(:schedule, christmas: "#{@curr_date.year}-12-25")
 		  	  visit edit_schedule_path(@schedule)
+          find("body").click
 	      	find("#christmas").click
 	      	find("select.ui-datepicker-month").value.should eq "11" #zero-based value for December
 	      	find("select.ui-datepicker-year").value.should eq @curr_date.year.to_s
@@ -101,6 +104,7 @@ RSpec.describe "Date Picker", :type => :request do
           @curr_date = Time.now
           @schedule = FactoryGirl.create(:schedule, easter: "#{@curr_date.year}-4-30")
           visit edit_schedule_path(@schedule)
+          find("body").click
           find("#easter").click
           find("select.ui-datepicker-month").value.should eq "3" 
           find("select.ui-datepicker-year").value.should eq @curr_date.year.to_s

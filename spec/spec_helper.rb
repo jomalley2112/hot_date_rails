@@ -1,13 +1,11 @@
 ENV['RAILS_ENV'] ||= 'test'
 require File.expand_path("../dummy/config/environment.rb", __FILE__)
 require 'rspec/rails'
-#require 'rspec/autorun'
 require 'factory_girl_rails'
 require 'database_cleaner'
 require 'capybara/rails'
 require 'capybara/rspec'
 require 'pry-rails'
-# require 'mongoid'
 
 Rails.backtrace_cleaner.remove_silencers!
 
@@ -46,8 +44,7 @@ RSpec.configure do |config|
 
 end
 
-
-#For testing jQuery UI slider widget
+#For testing jQuery UI slider widget (not currently working 2/17/2017)
 module CapybaraExtension
   def drag_by(right_by, down_by)
     base.drag_by(right_by, down_by)
@@ -61,6 +58,7 @@ end
 ::Capybara::Selenium::Node.send :include, CapybaraSeleniumExtension
 ::Capybara::Node::Element.send :include, CapybaraExtension
 
+#To explicitly run in Chrome
 # Capybara.register_driver :selenium do |app|
 #   Capybara::Selenium::Driver.new(app, :browser => :chrome)
 # end

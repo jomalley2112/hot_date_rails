@@ -3,6 +3,7 @@ require 'spec_helper'
 RSpec.describe "Picker Microdata Customization", :type => :request do
 	before(:each) do
 	  visit '/custom_schedules/new'
+	  find("form").click #needed to set focus so events are picked up
 	end
 
 	describe "doesn't affect certain existing features" do

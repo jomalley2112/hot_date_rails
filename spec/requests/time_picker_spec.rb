@@ -4,18 +4,20 @@ RSpec.describe "Time Picker", :type => :request do
   describe "Create New", :js => true do
     before(:each) do
   	  visit new_schedule_path
+  	  find("form").click #needed to set focus so events are picked up
   	end
    	describe "Standard format" do
       it "is displayed when time field receives focus and is hidden 
   				when time field loses focus" do
-	    	find("#lunchtime").click
+  			find("#lunchtime").click
+	    	sleep 1
 	    	page.should have_selector("#ui-datepicker-div", visible: true)
 	    	find("#schedule_name").click
 	    	sleep 1
 	    	page.should have_no_selector("#ui-datepicker-div", visible: true)
 	    end
 	    
-	    it "fills in  the time field correctly and disappears when 'Done' button clicked" do
+	    it "fills in  the time field correctly and disappears when 'Done' button clicked", slider: true do
 	    	find("#lunchtime").click
 	    	find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
 	    	find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
@@ -39,7 +41,7 @@ RSpec.describe "Time Picker", :type => :request do
       end
 
       describe "updated time is properly persisted in the database" do
-      	it "updates data properly when lowercase meridian is specified" do
+      	it "updates data properly when lowercase meridian is specified", slider: true do
       		find("#suppertime").click
       		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
 	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
@@ -48,9 +50,8 @@ RSpec.describe "Time Picker", :type => :request do
 	    		sleep 1
 	    		find("input#suppertime").value.should match('1:15 pm')	
       	end
-      	it "updates data prpperly when uppercase meridian is specified" do
+      	it "updates data prpperly when uppercase meridian is specified", slider: true do
       		find("#beer_oclock").click
-      		# binding.pry
       		find("div.ui_tpicker_hour_slider").find("span.ui-slider-handle").drag_by(76, 0) #1 pm
 	    		find("div.ui_tpicker_minute_slider").find("span.ui-slider-handle").drag_by(35, 0) #15 min
 	    		find("button.ui-datepicker-close").click
