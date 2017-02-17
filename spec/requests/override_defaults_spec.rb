@@ -7,6 +7,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 	describe "time grid intervals" do
 		before(:each) do
 	  	visit '/custom_schedules/new'
+	  	find("form").click
 		end
 	  it "shows Minute grid with intervals of 15" do
 			find("input#lunchtime").click

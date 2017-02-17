@@ -4,6 +4,7 @@ RSpec.describe "Time Picker", :type => :request do
   describe "Create New", :js => true do
     before(:each) do
   	  visit new_schedule_path
+  	  find("form").click #needed to set focus so events are picked up
   	end
    	describe "Standard format" do
       it "is displayed when time field receives focus and is hidden 

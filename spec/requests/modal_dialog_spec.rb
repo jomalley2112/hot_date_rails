@@ -5,6 +5,7 @@ RSpec.describe "Dynamically added inputs", :type => :request do
 		let!(:schedule) { FactoryGirl.create(:schedule) }
 		it "performs no differently" do
 			visit schedules_path
+			find("body").click
 			click_link("Edit")
 			sleep 2
 			find("#birthday").click
@@ -13,7 +14,10 @@ RSpec.describe "Dynamically added inputs", :type => :request do
 		
 		describe "both static and dynamic inputs" do
 			context "...and there's a picker in the document behind the modal" do
-				before { visit edit_schedule_with_index_path(schedule) }
+				before do 
+					visit edit_schedule_with_index_path(schedule)
+					find("body").click
+				end
 				it "has no adverse effect on the non-dynamically added fields" do
 					click_link "Edit" #open modal (which kicks off call to Window.bindHDPickers
 					sleep 2
