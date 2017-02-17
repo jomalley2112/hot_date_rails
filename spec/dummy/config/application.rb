@@ -14,7 +14,7 @@ require 'mongoid'
 module Dummy
   class Application < Rails::Application
     config.time_zone = 'Eastern Time (US & Canada)'
-	  config.serve_static_files = true
+	  config.public_file_server.enabled = true
   end
 end
 
