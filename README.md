@@ -170,14 +170,15 @@ $( "#modal_dialog" ).load("/schedules/1/edit-in-modal", ->
 
 #### To run tests ####
 ```
-rspec spec --tag ~@defaults
-rspec spec --tag @defaults --order default
+rspec spec --tag ~@slider --tag ~@defaults
+rspec spec --tag ~@slider --tag @defaults --order default
 ```
 
 #### Credits ####
 - This gem makes use of the [jQuery Timepicker Addon](https://github.com/trentrichardson/jQuery-Timepicker-Addon)
 
 ##### TODO #####
-- add convenience methods for common formats
-- add method that accepts both a picker format and a strftime format so custom locale formats don't need to be added by the user
+- See if we can get Selenium drag_by to work again. For now we're filtering out any specs that involve the slider
+- Add convenience methods for common formats
+- Add method that accepts both a picker format and a strftime format so custom locale formats don't need to be added by the user
 

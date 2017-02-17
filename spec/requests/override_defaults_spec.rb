@@ -34,6 +34,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 			describe "HotDateRails default date" do
 				before(:each) do
 			  	visit new_schedule_path
+			  	find("body").click
 				end
 				it "fills in the date field with date formatted like 01/01/2001" do
 		    	curr_date = Time.now
@@ -46,10 +47,11 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 			end
 			
 		end
-		describe "time Format" do
+		describe "time Format", slider: true do
 			describe "HotDateRails time default" do
 				before(:each) do
 			  	visit new_schedule_path
+			  	find("body").click
 				end
 				it "fills in the time field with time formatted like 23:59 " do
 		    	find("#lunchtime").click
@@ -60,10 +62,11 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 		    end
 			end
 		end
-		describe "datetime Format" do
+		describe "datetime Format", slider: true do
 			describe "HotDateRails datetime default" do
 				before(:each) do
 			  	visit new_schedule_path
+			  	find("body").click
 				end
 				it "fills in the datetime field with datetime formatted like 01/01/2001 23:59 " do
 					find("#apocalypse").click
@@ -88,6 +91,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 			  	end
 			  	#defaults are usually overridden in spec/dummy/config/environment.rb
 			  	visit '/custom_schedules/new'
+			  	find("body").click
 				end
 				it "fills in the date field with date formatted like 'January 1, 2010' " do
 					find("#christmas").click
@@ -100,13 +104,14 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 		end
 		
 
-		describe "time Format" do
+		describe "time Format", slider: true do
 			describe "overridden default time" do
 				before(:each) do
 			  	HotDateRails.config do |c|
 			  		c.time_format = "h:mm tt"
 			  	end
 			  	visit '/custom_schedules/new'
+			  	find("body").click
 				end
 				it "fills in the time field with time formatted like '9:35 am' " do
 					find("#beer_oclock").click
@@ -118,7 +123,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 			end
 		end
 
-		describe "datetime Format" do
+		describe "datetime Format", slider: true do
 			describe "overridden default datetime" do
 				before(:each) do
 			  	HotDateRails.config do |c|
@@ -126,6 +131,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 			  		c.time_format = "h:mm tt"
 			  	end
 			  	visit '/custom_schedules/new'
+			  	find("body").click
 				end
 				it "fills in the datetime field with datetime formatted like January 1, 2001 1:59 pm " do
 					find("#epoch").click
