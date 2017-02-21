@@ -17,7 +17,6 @@
 //= depend_on_asset 'ui-bg_flat_10_000000_40x100.png'
 
  /*
- *= require jquery-ui
  *= require jquery-ui-timepicker-addon
  *= require_tree ./hot_date_rails
 */

@@ -1,7 +1,7 @@
-# Start application.js
-#
+
 #= require jquery2
-#= require jquery-ui
+#= require jquery-ui.min
+#= require jquery-ui-dialog
 #= require jquery_ujs
 #= require hot_date_rails
 #= require_tree .

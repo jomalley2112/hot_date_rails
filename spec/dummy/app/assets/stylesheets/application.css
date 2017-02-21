@@ -12,6 +12,7 @@
  *
  *= require_tree .
  *= require jquery-ui
+ *= require jquery-ui-dialog
  *= require hot_date_rails
  *= require_self
  */
