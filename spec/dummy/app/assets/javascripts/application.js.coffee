@@ -1,7 +1,6 @@
 
 #= require jquery2
-#= require jquery-ui.min
-#= require jquery-ui-dialog
+#= require jquery-ui
 #= require jquery_ujs
 #= require hot_date_rails
 #= require_tree .

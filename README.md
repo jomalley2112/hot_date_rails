@@ -115,6 +115,7 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 | change_year       |     X      |            |       X        |
 | year_range        |     X      |            |       X        |
 | alt_time_format*  |            |     X      |       X        |
+| control_type      |            |     X      |       X        |
 | hour_grid         |            |     X      |       X        |
 | minute_grid       |            |     X      |       X        |
 | second_grid       |            |     X      |       X        |
@@ -133,6 +134,7 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 - There are five default values that can be overridden globally. To do so add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call\*:
 ```ruby
 HotDateRails.config do |config|
+  config.control_type = "slider" #or "select"
   config.hour_grid = "12"
   config.minute_grid = "15"
   config.second_grid = "30"
