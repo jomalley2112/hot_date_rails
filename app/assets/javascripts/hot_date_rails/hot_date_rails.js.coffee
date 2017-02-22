@@ -43,19 +43,3 @@ setDatePickerOptions = (input, defOpts) ->
   userOpts = $(input).data()
   allOpts = $.extend({}, defOpts, userOpts)
   $(input).datepicker(allOpts)
-
-
-#dataObj = input.data()
-# $.each(dataObj, function (k,v) {
-#     console.log(k+"="+v)
-# });
-
-
-# $(document).on 'ready page:load', ->
-#   $("input.timepicker").each (i) ->
-#     $(this).timepicker
-#       altField: $(this).next()
-#       hourGrid: 6
-#       minuteGrid: 10
-#       secondGrid: 10
-#       timeFormat: this.getAttribute("data-time-format")

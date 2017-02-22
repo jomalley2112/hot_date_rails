@@ -31,7 +31,7 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 
 \*\* *If you do specify the cls parameter keep in mind that you will probably need to add another format under the correct branch in the locale file and specify that format in the locale_file parameter*
 
-#### Example Form Helper Calls ####
+#### Example Basic Form Helper Calls ####
 ```RHTML
 <!--Using just default values-->
 <%= form_for @schedule do |f| %>
@@ -52,29 +52,8 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 <% end %>
 ```
 
-#### Example Form Helper Calls when Not using ActiveRecord ####
+#### Example Form Helper Calls with Options ####
 ```RHTML
-<%= form_for @schedule do |f| %>
-<table>
-	<tr>
-		<td><%= f.hd_label :birthday %></td>
-		<td><%= f.date_picker :birthday %></td>
-	</tr>
-	<tr>
-		<td><%= f.hd_label :lunchtime %></td>
-		<td><%= f.time_picker :lunchtime %></td>
-	</tr>
-	<tr>
-		<td><%= f.hd_label :apocalypse %></td>
-		<td><%= f.datetime_picker :apocalypse %></td>
-	</tr>
-</table>
-<% end %>
-```
-
-
-```RHTML
-<!--Using some Options-->
 <%= form_for @schedule do |f| %>
 <table>
 	<tr>
@@ -100,6 +79,27 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 </table>
 ```
 
+#### Example Form Helper Calls when Not using ActiveRecord ####
+```RHTML
+<%= form_for @schedule do |f| %>
+<table>
+	<tr>
+		<td><%= f.hd_label :birthday %></td>
+		<td><%= f.date_picker :birthday %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :lunchtime %></td>
+		<td><%= f.time_picker :lunchtime %></td>
+	</tr>
+	<tr>
+		<td><%= f.hd_label :apocalypse %></td>
+		<td><%= f.datetime_picker :apocalypse %></td>
+	</tr>
+</table>
+<% end %>
+```
+
+
 #### <a name="fho"></a>Form helper picker methods options ####
 - :date_format - datepicker [format string](http://api.jqueryui.com/datepicker/)
 	- default: "mm/dd/yy"
@@ -115,6 +115,7 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 | change_year       |     X      |            |       X        |
 | year_range        |     X      |            |       X        |
 | alt_time_format*  |            |     X      |       X        |
+| control_type      |            |     X      |       X        |
 | hour_grid         |            |     X      |       X        |
 | minute_grid       |            |     X      |       X        |
 | second_grid       |            |     X      |       X        |
@@ -130,9 +131,10 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 \* *alt_time_format should be overridden when you need more precision than minutes for a datetime picker (e.g. "HH:mm:ss")*
 
 #### Overriding Global Defaults ####
-- There are five default values that can be overridden globally. To do so add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call\*:
+- There are six default values that can be overridden globally. To do so add a block similar to the following in your `config/environment.rb` file somewhere after the `Rails.application.initialize!` call\*:
 ```ruby
 HotDateRails.config do |config|
+  config.control_type = "slider" #or "select"
   config.hour_grid = "12"
   config.minute_grid = "15"
   config.second_grid = "30"

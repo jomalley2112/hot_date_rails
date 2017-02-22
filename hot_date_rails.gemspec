@@ -29,8 +29,6 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'database_cleaner'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'pry-rails'
-  
-  #Commented out in order to upgrade versions
   s.add_development_dependency 'factory_girl_rails'
   s.add_development_dependency 'mongoid'
   s.add_development_dependency 'rspec-rails', '~> 3.5'

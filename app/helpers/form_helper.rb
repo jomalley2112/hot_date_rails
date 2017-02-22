@@ -60,6 +60,7 @@ module FormHelper
 	  	data[:date_format] = (opts[:date_format] || hd_config.date_format)
 	  	data[:time_format] = (opts[:time_format] || hd_config.time_format)
 	  	#Time grids have default values set in config/initializers/hot_date_rails.rb
+	  	data[:control_type]   ||= hd_config.control_type
 	  	data[:hour_grid]   ||= hd_config.hour_grid
 	  	data[:minute_grid] ||= hd_config.minute_grid
 	  	data[:second_grid] ||= hd_config.second_grid
