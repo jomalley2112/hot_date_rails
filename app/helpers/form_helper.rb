@@ -1,4 +1,12 @@
 module FormHelper
+	
+	module ActionView::Helpers::FormTagHelper
+		#when there's no form object
+		def hd_picker_tag(field_name, opts={}, locale_format=nil, cls="datepicker")
+	  	draw_ext_input(field_name, cls, locale_format, opts)
+	  end
+	end
+
 	class ActionView::Helpers::FormBuilder
 		include ActionView::Helpers::FormTagHelper
 		extend HotDateRails::Utils

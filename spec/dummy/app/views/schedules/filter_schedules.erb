@@ -1,0 +1,17 @@
+<table>
+	<tr>
+		<td colspan="2">
+			<%= form_tag(filtered_schedules_path, method: :get) do %>
+				<%= hd_picker_tag(:start_date) %>
+				to
+				<%= hd_picker_tag(:end_date) %>
+			<% end %>
+		</td>
+	</tr>
+<% @schedules.each do |s| %>
+	<tr>
+		<td><%= s.name %></td>
+		<td><%= link_to "Edit", "#", id: "open_edit_modal" %></td>
+	</tr>
+<% end %>
+</table>
