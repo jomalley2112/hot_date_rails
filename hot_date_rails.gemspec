@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.authors     = ["John O'Malley"]
   s.email       = ["jom@nycap.rr.com"]
   s.homepage    = "https://github.com/jomalley2112/hot_date_rails"
-  s.summary     = "A gem that extends Rails FormBuilder by adding date, time and datetime picker input functionality"
+  s.summary     = "A gem that extends Rails FormBuilder and FormTagHelper by adding date, time and datetime picker input functionality"
   s.description = "A gem that allows you to add date only, time only and datetime pickers to your forms. \
                   This gem also takes into account the way Ruby doesn't parse certain American-friendly dates \
                   so it passes along hidden fields with the values expected by rails. \

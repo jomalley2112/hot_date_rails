@@ -2,9 +2,9 @@
 	<tr>
 		<td colspan="2">
 			<%= form_tag(filtered_schedules_path, method: :get) do %>
-				<%= hd_picker_tag(:start_date) %>
+				<%= hd_picker_tag :start_date, l(Date.today - 1.month) %>
 				to
-				<%= hd_picker_tag(:end_date) %>
+				<%= hd_picker_tag :end_date, l(Date.today) %>
 			<% end %>
 		</td>
 	</tr>

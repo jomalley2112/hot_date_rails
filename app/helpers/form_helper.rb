@@ -2,8 +2,16 @@ module FormHelper
 	
 	module ActionView::Helpers::FormTagHelper
 		#when there's no form object
-		def hd_picker_tag(field_name, opts={}, locale_format=nil, cls="datepicker")
-	  	draw_ext_input(field_name, cls, locale_format, opts)
+		def hd_picker_tag(field_name, value=nil, opts={}, locale_format=nil, cls="datepicker")
+	  	draw_ext_input_tag(field_name, value, cls, locale_format, opts)
+	  end
+
+	  private
+	  def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
+	  	# value = I18n.localize(value, format: locale_format) if value.present?
+	  	input_attrs = InputAttrs.new(field_name, cls, opts)
+	  	text_field_tag("#{field_name}", value, input_attrs.to_h) + \
+	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn" })
 	  end
 	end
 
