@@ -1,8 +1,8 @@
 module FormHelper
 	
 	module ActionView::Helpers::FormTagHelper
-		#when there's no form object
-		def hd_picker_tag(field_name, value=nil, opts={}, locale_format=nil, cls="datepicker")
+		#for when there's no rails form object and you really just need inputs
+		def hd_picker_tag(field_name, value=nil, cls="datepicker", opts={}, locale_format=nil)
 	  	draw_ext_input_tag(field_name, value, cls, locale_format, opts)
 	  end
 

@@ -17,7 +17,8 @@ RSpec.describe "Hot Date Picker Tag", :type => :request do
       start_date = Date.today - 1.week
       fill_in "start_date", with: I18n.l(start_date)
       click_button "Filter"
-      find("#start_date").value.should eq I18n.l(start_date) #.to_date
+      sleep 2
+      find("#start_date").value.should eq I18n.l(start_date)
     end
 
   end
