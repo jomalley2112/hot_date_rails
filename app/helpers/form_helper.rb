@@ -8,7 +8,7 @@ module FormHelper
 
 	  private
 	  def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
-	  	# value = I18n.localize(value, format: locale_format) if value.present?
+	  	value = I18n.l(value.to_date) if value.present?
 	  	input_attrs = InputAttrs.new(field_name, cls, opts)
 	  	text_field_tag("#{field_name}", value, input_attrs.to_h) + \
 	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn" })

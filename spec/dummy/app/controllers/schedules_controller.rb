@@ -5,7 +5,8 @@ class SchedulesController < ApplicationController
 	end
 
 	def filter_schedules
-		@schedules = Schedule.where(birthday: params[:start_date]..params[:end_date])
+		@start_date, @end_date = params[:start_date], params[:end_date]
+		@schedules = Schedule.where(birthday: @start_date..@end_date)
 	end
 
 	def new
