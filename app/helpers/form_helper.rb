@@ -1,4 +1,20 @@
 module FormHelper
+	
+	module ActionView::Helpers::FormTagHelper
+		#for when there's no rails form object and you really just need inputs
+		def hd_picker_tag(field_name, value=nil, cls="datepicker", opts={}, locale_format=nil)
+	  	draw_ext_input_tag(field_name, value, cls, locale_format, opts)
+	  end
+
+	  private
+	  def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
+	  	value = I18n.l(value.to_date) if value.present?
+	  	input_attrs = InputAttrs.new(field_name, cls, opts)
+	  	text_field_tag("#{field_name}", value, input_attrs.to_h) + \
+	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn" })
+	  end
+	end
+
 	class ActionView::Helpers::FormBuilder
 		include ActionView::Helpers::FormTagHelper
 		extend HotDateRails::Utils

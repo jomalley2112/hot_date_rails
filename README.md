@@ -21,11 +21,17 @@ form_object.hd_label(name, content_or_options=nil, options=nil, &block)
 
 form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 ```
+#### Tag Helper Usage ####
+```ruby
+hd_picker_tag(field_name, value=nil, cls="datepicker", options={}, locale_format=nil)
+```
+
 - *name* - a symbol representing the form field
 - *options* - see the [Form Helper Options](#fho) section below
 - *locale_format* - the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
 	- A [base set](#locales) of locale_formats are included for english and custom formats can be added.
-- *cls* - the css class name for the picker object created. This is used solely for the purpose of attaching the correct type of picker to the field. (To specify your own css classes just for formatting you can add them to the options hash.) Valid values are "date", "time" and "datetime". When not specified hd_picker gets this from the type of the column specified.\* \*\*
+- *value* - the initial value of the input (hd_picker_tag only)
+- *cls* - the css class name for the picker object created. This is used solely for the purpose of attaching the correct type of picker to the field. (To specify your own css classes just for formatting you can add them to the options hash.) Valid values are "datepicker", "timepicker" and "datetimepicker". When not specified hd_picker gets this from the type of the column specified.\* \*\*
 
 \* *The only good reason for setting this parameter is if you have a datetime field and you want the field to just show the date or just show the time*
 
@@ -96,6 +102,15 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 		<td><%= f.datetime_picker :apocalypse %></td>
 	</tr>
 </table>
+<% end %>
+```
+
+#### Example Tag Helper Calls ####
+```RHTML
+<%= form_tag(filtered_schedules_path, method: :get) do %>
+	<%= hd_picker_tag :start_date, (@start_date || Date.today - 1.month) %><!-- datepicker is default -->
+	to
+	<%= hd_picker_tag :end_date, (@end_date || Date.today), "datetimepicker" %><!-- using datetimepicker -->
 <% end %>
 ```
 
