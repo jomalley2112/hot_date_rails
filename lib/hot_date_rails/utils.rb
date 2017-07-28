@@ -1,4 +1,4 @@
-require 'pry'
+# require 'pry'
 module HotDateRails::Utils
 	def deprecate(*dep_mtds, new_mtd)
 		dep_mtds.each do |dep_mtd|
