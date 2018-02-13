@@ -10,7 +10,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 group :test do
 	gem 'fuubar', platforms: [:ruby]
-	gem 'webdrivers', '~> 2.3'
+	gem 'webdrivers' #, '~> 2.3'
 end
 
 # Declare any dependencies that are still in development here instead of in
