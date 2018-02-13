@@ -58,7 +58,8 @@ end
 ::Capybara::Selenium::Node.send :include, CapybaraSeleniumExtension
 ::Capybara::Node::Element.send :include, CapybaraExtension
 
-# To explicitly run in Chrome
-Capybara.register_driver :selenium do |app|
-  Capybara::Selenium::Driver.new(app, :browser => :chrome)
-end
+# To explicitly run in Chrome.
+# JOM 02/13/2018 Currently Only Chrome is working on OSX and only Firefox (with bundle exec) is working on Windows
+# Capybara.register_driver :selenium do |app|
+#   Capybara::Selenium::Driver.new(app, :browser => :chrome)
+# end
