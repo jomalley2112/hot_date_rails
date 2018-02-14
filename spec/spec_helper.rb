@@ -13,6 +13,7 @@ Rails.backtrace_cleaner.remove_silencers!
 Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each { |f| require f }
 
 RSpec.configure do |config|
+  config.example_status_persistence_file_path = "examples.txt"
   config.mock_with :rspec
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
@@ -60,6 +61,8 @@ end
 
 # To explicitly run in Chrome.
 # JOM 02/13/2018 Currently Only Chrome is working on OSX and only Firefox (with bundle exec) is working on Windows
-# Capybara.register_driver :selenium do |app|
-#   Capybara::Selenium::Driver.new(app, :browser => :chrome)
-# end
+if ENV["_system_name"] == 'OSX'
+  Capybara.register_driver :selenium do |app|
+    Capybara::Selenium::Driver.new(app, :browser => :chrome)
+  end
+end
