@@ -1,0 +1,18 @@
+<table>
+	<tr>
+		<td colspan="2">
+			<%= form_for :schedule, url: last_updated_filter_path,  method: :get do |f| %>
+				<%= f.hd_picker :start_date %>
+				to
+				<%= f.hd_picker :end_date %>
+				<%= f.button "Filter" %>
+			<% end %>
+		</td>
+	</tr>
+<% @schedules.each do |s| %>
+	<tr>
+		<td><%= s.name %></td>
+		<td>&nbsp;</td>
+	</tr>
+<% end %>
+</table>

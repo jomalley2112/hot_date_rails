@@ -4,13 +4,19 @@ class SchedulesController < ApplicationController
 		@schedules = Schedule.all
 	end
 
-	def index_by_date_range
-		Schedule.where(updated_at: date_range)
-	end
-
 	def filter_schedules
 		@start_date, @end_date = params[:start_date], params[:end_date]
 		@schedules = Schedule.where(birthday: @start_date..@end_date)
+	end
+
+	def filter_by_updated_at
+		if params[:schedule]
+			@start_date  = params[:schedule][:start_date]
+			@end_date    = params[:schedule][:end_date]
+		else
+			@start_date, @end_date = Date.yesterday, Date.today
+		end
+		@schedules = Schedule.where(updated_at: @start_date..@end_date)
 	end
 
 	def new
@@ -69,12 +75,4 @@ class SchedulesController < ApplicationController
 										:sleepytime, :party_time, :easter, :date_in_time)
 	end
 
-	def date_range
-		# instance variables are for _filter_form partial
-		@start_date = to_date("start_date")
-		@end_date = to_date("end_date")
-		start_date = @start_date || (DateTime.now - 100.years)
-		end_date = @end_date  || DateTime.now
-		return (start_date.to_datetime.beginning_of_day..end_date.to_datetime.end_of_day)
-	end
 end
