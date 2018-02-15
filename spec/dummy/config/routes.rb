@@ -7,7 +7,6 @@ Rails.application.routes.draw do
   get 'custom_schedules/new' => 'schedules#new_custom'
   get 'custom_schedules/:id/edit' => 'schedules#edit_custom'
   get 'schedules/filtered' => 'schedules#filter_schedules', as: 'filtered_schedules'
-  get 'schedules/last_updated_filter' => 'schedules#filter_by_updated_at', as: 'last_updated_filter'
 
   resources :no_sql_models, only: [:new, :index]
 

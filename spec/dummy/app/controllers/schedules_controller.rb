@@ -9,16 +9,6 @@ class SchedulesController < ApplicationController
 		@schedules = Schedule.where(birthday: @start_date..@end_date)
 	end
 
-	def filter_by_updated_at
-		if params[:schedule]
-			@start_date  = params[:schedule][:start_date]
-			@end_date    = params[:schedule][:end_date]
-		else
-			@start_date, @end_date = Date.yesterday, Date.today
-		end
-		@schedules = Schedule.where(updated_at: @start_date..@end_date)
-	end
-
 	def new
 		@schedule = Schedule.new
 	end
