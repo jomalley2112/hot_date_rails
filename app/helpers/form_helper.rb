@@ -8,10 +8,10 @@ module FormHelper
 
 	  private
 	  def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
-	  	value = I18n.l(value.to_date) if value.present?
+	  	formatted_value = I18n.l(value.to_date) if value.present?
 	  	input_attrs = InputAttrs.new(field_name, cls, opts)
-	  	text_field_tag("#{field_name}", value, input_attrs.to_h) + \
-	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn" })
+	  	text_field_tag("#{field_name}", formatted_value, input_attrs.to_h) + \
+	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn", value: value })
 	  end
 	end
 
@@ -46,10 +46,10 @@ module FormHelper
 	  private
 	  def draw_ext_input(attr, cls, locale_format=nil, opts={})
 	  	value = object.send(attr) if object.respond_to? attr
-	  	value = I18n.localize(value, format: locale_format) if value.present?
+	  	formatted_value = I18n.localize(value, format: locale_format) if value.present?
 	  	input_attrs = InputAttrs.new(attr, cls, opts)
-	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (value || ""))) + \
-	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" })
+	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (formatted_value || ""))) + \
+	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" }) #hidden_field handles setting the value from the attribute
 	  end
 
 	  def column_type(attr)

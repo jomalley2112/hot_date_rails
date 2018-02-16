@@ -64,4 +64,5 @@ class SchedulesController < ApplicationController
 										:birthday, :alarm_setting, :epoch, :christmas, :suppertime, :beer_oclock,
 										:sleepytime, :party_time, :easter, :date_in_time)
 	end
+
 end
