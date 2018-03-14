@@ -18,18 +18,18 @@ Gem::Specification.new do |s|
                   expected by the picker."
   s.license     = "MIT"
 
-  s.files = Dir["{app,config,db,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile", "README.rdoc"]
-  s.test_files = Dir["spec/**/*"]
+  s.files = Dir["{app,config,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile"]
+  # s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "rails", '~> 5.0'
-  s.add_dependency "coffee-rails"
-  s.add_dependency 'jquery-rails'
-  s.add_development_dependency "sqlite3"
-  s.add_development_dependency 'capybara'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'pry-rails'
-  s.add_development_dependency 'factory_girl_rails'
-  s.add_development_dependency 'mongoid'
-  s.add_development_dependency 'rspec-rails' #, '~> 3.5'
+  s.add_dependency 'rails', '~> 5.0' #was 5.0.1
+  s.add_dependency 'coffee-rails', '~> 4.2' #was 4.2.2
+  s.add_dependency 'jquery-rails', '~> 4.3' #was 4.3.1
+  s.add_development_dependency 'sqlite3'
+  s.add_development_dependency 'capybara' #was 2.18.0
+  s.add_development_dependency 'database_cleaner', '>= 1.5.3' #was 1.5.3
+  s.add_development_dependency 'selenium-webdriver' #was 3.4.4
+  s.add_development_dependency 'pry-rails' #was 0.3.4
+  s.add_development_dependency 'factory_girl_rails' #was 4.8.0
+  s.add_development_dependency 'mongoid', '~> 6.1' #was 6.1.0
+  s.add_development_dependency 'rspec-rails', '~> 3.5' #was 3.5.2
 end
