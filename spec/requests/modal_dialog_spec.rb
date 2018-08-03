@@ -8,7 +8,7 @@ RSpec.describe "Dynamically added inputs", :type => :request do
 			find("body").click
 			click_link("Edit")
 			sleep 2
-			find("#birthday").click
+			find("#schedule_birthday").click
     	page.should have_selector("#ui-datepicker-div", visible: true)
 		end
 		
@@ -23,7 +23,7 @@ RSpec.describe "Dynamically added inputs", :type => :request do
 					sleep 2
 					click_button("Close") #close modal
 					sleep 1
-					find("#birthday").click
+					find("#schedule_birthday").click
 					page.should have_selector("#ui-datepicker-div", visible: true)
 				end
 			end

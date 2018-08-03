@@ -64,11 +64,10 @@ module FormHelper
 	class InputAttrs < Hash
 		def initialize(attr, hd_cls, opts={})
 			opts.reverse_merge!(html: {})
-			#Set html attribute hash here so :class and :id always get overridden in next lines
+			#Set html attribute hash here so :class always gets overridden in next line
 		  self.merge! opts[:html] 
 		  self[:class] = (self.fetch(:class, "").split(" ") << hd_cls).join(" ")
-	  	self[:id] = attr
-			opts[:hd_opts] ||= {}
+	  	opts[:hd_opts] ||= {}
 	  	opts[:data] ||= {}
 	  	data = opts[:hd_opts].merge(opts[:data])
 			hd_config = HotDateRails.config

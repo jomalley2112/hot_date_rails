@@ -9,13 +9,13 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 	describe "doesn't affect certain existing features" do
 		describe "still allows microdata to be passed through", :js => true do
 			it "has the data-my-data attribute" do
-				expect(find("input#suppertime")['data-my-data']).to match("true")
+				expect(find("#schedule_suppertime")['data-my-data']).to match("true")
 			end
 		end
 		describe "allows css classes to be passed through while adding the necessary picker class" do
 		  it "has classes 'css_class' and 'my_class'" do
-		  	expect(find("input#suppertime")['class']).to match("css_class")
-		  	expect(find("input#suppertime")['class']).to match("my_class")
+		  	expect(find("#schedule_suppertime")['class']).to match("css_class")
+		  	expect(find("#schedule_suppertime")['class']).to match("my_class")
 		  end
 		end
 	end
@@ -23,7 +23,7 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 
 	describe "Date Picker", :js => true do
 	  before(:each) do
-		  find("input#birthday").click
+		  find("#schedule_birthday").click
 		end
 		it "allows us to display the panel containing the Today and Done buttons" do
 			page.should have_selector("button.ui-datepicker-current", visible: true)
@@ -33,7 +33,7 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 
 	describe "Time Picker", :js => true do
 		before(:each) do
-		  find("input#lunchtime").click
+		  find("#schedule_lunchtime").click
 		end
 	  describe "add or change text" do
 	  	it "allows us to specify the text of the 'Now' button" do
@@ -50,11 +50,11 @@ RSpec.describe "Picker Microdata Customization", :type => :request do
 
 	describe "Datetime Picker", :js => true do
 	  before(:each) do
-		  find("input#apocalypse").click
+		  find("#schedule_apocalypse").click
 		end
 		it "allows us to add a separator between the date and time in the input value" do
 			find("a", text: "17").click
-			find("input#apocalypse").value.should match(/\d\d\/\d\d\/\d{4} @ \d\d:\d\d/)
+			find("#schedule_apocalypse").value.should match(/\d\d\/\d\d\/\d{4} @ \d\d:\d\d/)
 		end
 	end
 

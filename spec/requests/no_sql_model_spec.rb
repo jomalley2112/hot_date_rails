@@ -7,17 +7,17 @@ RSpec.describe "NoSqlModel", :type => :request, js: true do
  	  find("form").click
  	end
 	it "works with date picker" do
-		find("#birthday").click
+		find("#no_sql_model_birthday").click
     page.should have_selector(".ui-datepicker-week-end")
 		page.should_not have_selector(".ui-timepicker-div")
 	end
 	it "works with time picker" do
-		find("#lunchtime").click
+		find("#no_sql_model_lunchtime").click
 		page.should have_selector(".ui-timepicker-div")
 		page.should_not have_selector(".ui-datepicker-week-end")
 	end
 	it "works with datetime picker" do
-		find("#apocalypse").click
+		find("#no_sql_model_apocalypse").click
 		page.should have_selector(".ui-datepicker-week-end")
     page.should have_selector(".ui-timepicker-div")
 	end
