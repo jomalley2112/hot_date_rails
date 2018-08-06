@@ -14,10 +14,10 @@ describe ActionView::Helpers::FormBuilder do
 	  	@builder.should respond_to(:hd_picker)
 	  end
 	  describe '#hd_picker' do
-	    it "sets the id attribute to a 'rails-namespaced' value" do
+	    it "sets the id attributes to a 'rails-namespaced' value" do
 	    	input = @builder.hd_picker(:birthday)
-	    	id_value = Nokogiri::HTML.parse(input).xpath("//input").attr("id").value
-	    	expect(id_value).to eq "schedule_birthday"
+	    	expect(id_attr(input)).to eq "schedule_birthday"
+	    	expect(id_attr(input, "hidden")).to eq "schedule_birthday_hdn"
 	    end
 	  end
 	  context 'when multiple inputs for the same attribute exist' do
@@ -37,14 +37,15 @@ describe ActionView::Helpers::FormBuilder do
 	  	  	@input2 = s.hd_picker(:birthday, {html: {id: input_id.call(s)}})
 	  	  end
 	  	  expect(id_attr(@input1)).not_to eq(id_attr(@input2))
+	  	  expect(id_attr(@input1, "hidden")).not_to eq(id_attr(@input2, "hidden"))
 	  	end
 	  end
 	
 	end
 
 	private
-	def id_attr(input)
-		Nokogiri::HTML.parse(input).xpath("//input[@type='text']").attribute("id").value
+	def id_attr(input, type="text")
+		Nokogiri::HTML.parse(input).xpath("//input[@type='#{type}']").attribute("id").value
 	end
 	
 end

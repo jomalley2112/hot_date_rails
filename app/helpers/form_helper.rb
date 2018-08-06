@@ -48,8 +48,9 @@ module FormHelper
 	  	value = object.send(attr) if object.respond_to? attr
 	  	formatted_value = I18n.localize(value, format: locale_format) if value.present?
 	  	input_attrs = InputAttrs.new(attr, cls, opts)
+	  	# binding.pry
 	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (formatted_value || ""))) + \
-	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" }) #hidden_field handles setting the value from the attribute
+	    self.hidden_field(attr, { :class => attr.to_s + "-alt" }) #hidden_field handles setting the value from the attribute
 	  end
 
 	  def column_type(attr)

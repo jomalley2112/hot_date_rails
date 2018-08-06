@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hot_date_rails (1.5.9)
+    hot_date_rails (1.5.10)
       coffee-rails (~> 4.2)
       jquery-rails (~> 4.3)
       loofah (~> 2.2.1)
@@ -216,4 +216,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   1.12.5
+   1.16.3
