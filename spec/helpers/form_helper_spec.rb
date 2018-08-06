@@ -17,28 +17,34 @@ describe ActionView::Helpers::FormBuilder do
 	    it "sets the id attributes to a 'rails-namespaced' value" do
 	    	input = @builder.hd_picker(:birthday)
 	    	expect(id_attr(input)).to eq "schedule_birthday"
-	    	expect(id_attr(input, "hidden")).to eq "schedule_birthday_hdn"
 	    end
 	  end
 	  context 'when multiple inputs for the same attribute exist' do
 	  	let!(:person) { FactoryGirl.create(:person) }
-	  	let(:input_id) { proc {|input| "person_schedule_#{input.object.id}"} }
+	  	
 	  	before do
 	  	  2.times { person.schedules << FactoryGirl.create(:schedule) }
 	  	end
 	  	let!(:person_form_builder) { 
 	  		ActionView::Helpers::FormBuilder.new(:person, person, template, {}) 
 	  	}
-	  	example "we can manually give them unique ids" do
-	  		person_form_builder.fields_for(person.schedules.first) do |s|
-	  	  	@input1 = s.hd_picker(:birthday, {html: {id: input_id.call(s)}})
+	  	context "when we can manually specify unique ids" do
+	  		before do
+		  		person_form_builder.fields_for(person.schedules.first) do |schedule|
+		  	  	@input1 = schedule.hd_picker(:birthday, {html: {id: "birthday-a"}})
+		  	  end
+		  	  person_form_builder.fields_for(person.schedules.last) do |schedule|
+		  	  	@input2 = schedule.hd_picker(:birthday, {html: {id: "birthday-b"}})
+		  	  end
+		  	end
+	  	  example "the output code for the inputs has unique id attributes" do
+	  	  	expect(id_attr(@input1)).not_to eq(id_attr(@input2))
 	  	  end
-	  	  person_form_builder.fields_for(person.schedules.last) do |s|
-	  	  	@input2 = s.hd_picker(:birthday, {html: {id: input_id.call(s)}})
+	  	  example "the 'hidden' input has its own unique id attribute" do
+	  	  	expect(id_attr(@input1, "hidden")).not_to eq(id_attr(@input2, "hidden"))
 	  	  end
-	  	  expect(id_attr(@input1)).not_to eq(id_attr(@input2))
-	  	  expect(id_attr(@input1, "hidden")).not_to eq(id_attr(@input2, "hidden"))
 	  	end
+
 	  end
 	
 	end

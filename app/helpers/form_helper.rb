@@ -48,9 +48,8 @@ module FormHelper
 	  	value = object.send(attr) if object.respond_to? attr
 	  	formatted_value = I18n.localize(value, format: locale_format) if value.present?
 	  	input_attrs = InputAttrs.new(attr, cls, opts)
-	  	# binding.pry
 	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (formatted_value || ""))) + \
-	    self.hidden_field(attr, { :class => attr.to_s + "-alt" }) #hidden_field handles setting the value from the attribute
+	    self.hidden_field(attr, { :class => attr.to_s + "-alt", id: FormHelper.input_id(object, attr) })
 	  end
 
 	  def column_type(attr)
@@ -82,5 +81,12 @@ module FormHelper
 	  	data[:second_grid] ||= hd_config.second_grid
 	  	self[:data] = data
 		end
+	end
+
+	private
+	def self.input_id(parent_obj, suffix=nil)
+		#Uses the parent object for the id because each scope can only have a single input for each attribute
+		#TODO: This is not true. What about belongs_to/has_many relationship? May have to with random/unique after all
+		"hdr-hidden-#{parent_obj.class.to_s.downcase}_#{parent_obj.object_id}#{suffix}"
 	end
 end
