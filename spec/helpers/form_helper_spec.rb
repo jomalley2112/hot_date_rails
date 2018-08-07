@@ -19,7 +19,8 @@ describe ActionView::Helpers::FormBuilder do
 	    	expect(id_attr(input)).to eq "schedule_birthday"
 	    end
 	  end
-	  context 'when multiple inputs for the same attribute exist' do
+	  
+	  context 'when adding inputs to a form for the same attribute for multiple existing (has_many) children' do
 	  	let!(:person) { FactoryGirl.create(:person) }
 	  	
 	  	before do
@@ -28,7 +29,22 @@ describe ActionView::Helpers::FormBuilder do
 	  	let!(:person_form_builder) { 
 	  		ActionView::Helpers::FormBuilder.new(:person, person, template, {}) 
 	  	}
-	  	context "when we can manually specify unique ids" do
+
+	  	context "when we do not manually supply unique ids" do
+	  		before do
+	  			@html_frag = person_form_builder.fields_for(:schedules, include_id: false) do |schedule|
+		  	  	schedule.hd_picker(:birthday)
+		  	  end
+		  	end
+	  	  example "the 'text' input has its own unique id attribute" do
+	  	  	expect(id_attr_from_html(@html_frag, 1)).not_to eq(id_attr_from_html(@html_frag, 2))
+	  	  end
+	  	  example "the 'hidden' input has its own unique id attribute" do
+	  	  	expect(id_attr_from_html(@html_frag, 1, "hidden")).not_to eq(id_attr_from_html(@html_frag, 2, "hidden"))
+	  	  end
+	  	end
+
+	  	context "we can manually supply unique ids" do
 	  		before do
 		  		person_form_builder.fields_for(person.schedules.first) do |schedule|
 		  	  	@input1 = schedule.hd_picker(:birthday, {html: {id: "birthday-a"}})
@@ -37,7 +53,7 @@ describe ActionView::Helpers::FormBuilder do
 		  	  	@input2 = schedule.hd_picker(:birthday, {html: {id: "birthday-b"}})
 		  	  end
 		  	end
-	  	  example "the output code for the inputs has unique id attributes" do
+	  	  example "the 'text' input has its own unique id attribute" do
 	  	  	expect(id_attr(@input1)).not_to eq(id_attr(@input2))
 	  	  end
 	  	  example "the 'hidden' input has its own unique id attribute" do
@@ -46,12 +62,42 @@ describe ActionView::Helpers::FormBuilder do
 	  	end
 
 	  end
+
+	  context 'when adding multiple inputs for new instances of the same has_many attribute type' do
+	  	let!(:person) { FactoryGirl.create(:person) }
+	  	let!(:person_form_builder) { 
+	  		ActionView::Helpers::FormBuilder.new(:person, person, template, {}) 
+	  	}
+	  	context "when we manually specify unique ids" do
+	  		before do
+	  			person_form_builder.fields_for(:schedule, person.schedules.build) do |schedule|
+		  	  	@input1 = schedule.hd_picker(:birthday, {html: {id: "birthday-a"}})
+		  	  end
+		  	  person_form_builder.fields_for(:schedule, person.schedules.build) do |schedule|
+		  	  	@input2 = schedule.hd_picker(:birthday, {html: {id: "birthday-b"}})
+		  	  end
+		  	end
+	  	  example "the 'text' input has its own unique id attribute" do
+	  	  	expect(id_attr(@input1)).not_to eq(id_attr(@input2))
+	  	  end
+	  	  example "the 'hidden' input has its own unique id attribute" do
+	  	  	expect(id_attr(@input1, "hidden")).not_to eq(id_attr(@input2, "hidden"))
+	  	  end
+	  	end
+
+	  	
+
+	  end
 	
 	end
 
 	private
 	def id_attr(input, type="text")
 		Nokogiri::HTML.parse(input).xpath("//input[@type='#{type}']").attribute("id").value
+	end
+
+	def id_attr_from_html(html_frag, input_index, type="text")
+		Nokogiri::HTML.parse(html_frag).xpath("//input[@type='#{type}'][#{input_index}]").attribute("id").value
 	end
 	
 end

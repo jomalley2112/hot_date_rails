@@ -87,6 +87,6 @@ module FormHelper
 	def self.input_id(parent_obj, suffix=nil)
 		#Uses the parent object for the id because each scope can only have a single input for each attribute
 		#TODO: This is not true. What about belongs_to/has_many relationship? May have to with random/unique after all
-		"hdr-hidden-#{parent_obj.class.to_s.downcase}_#{parent_obj.object_id}#{suffix}"
+		"hdr-hidden-#{parent_obj.class.to_s.downcase}-#{parent_obj.object_id}-#{suffix}"
 	end
 end
