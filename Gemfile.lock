@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    hot_date_rails (1.5.9)
+    hot_date_rails (1.5.10)
       coffee-rails (~> 4.2)
       jquery-rails (~> 4.3)
       loofah (~> 2.2.1)
@@ -148,6 +148,7 @@ GEM
       rake (>= 0.8.7)
       thor (>= 0.18.1, < 2.0)
     rake (12.3.0)
+    rb-readline (0.5.5)
     rspec-core (3.7.1)
       rspec-support (~> 3.7.0)
     rspec-expectations (3.7.0)
@@ -209,6 +210,7 @@ DEPENDENCIES
   hot_date_rails!
   mongoid (~> 6.1)
   pry-rails
+  rb-readline
   rspec-rails (~> 3.5)
   selenium-webdriver
   sqlite3
@@ -216,4 +218,4 @@ DEPENDENCIES
   webdrivers
 
 BUNDLED WITH
-   1.12.5
+   1.16.3

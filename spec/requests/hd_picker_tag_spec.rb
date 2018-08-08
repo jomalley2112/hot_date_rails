@@ -11,7 +11,7 @@ RSpec.describe "Hot Date Picker Tag", :type => :request do
     
   	it "is displayed when date field receives focus and hidden 
   				when start_date field loses focus" do
-    	find("#start_date").click
+    	find("input[name='start_date'").click
     	page.should have_selector("#ui-datepicker-div", visible: true)
     end
 
@@ -19,7 +19,7 @@ RSpec.describe "Hot Date Picker Tag", :type => :request do
       fill_in "start_date", with: I18n.l(start_date)
       click_button "Filter"
       sleep 2
-      find("#start_date").value.should eq I18n.l(start_date)
+      find("input[name='start_date'").value.should eq I18n.l(start_date)
     end
 
   end
@@ -35,7 +35,7 @@ RSpec.describe "Hot Date Picker Tag", :type => :request do
     context 'when the start date is left alone and the form is submitted again' do
       before { click_button "Filter" }
       it 'submits the same start date' do
-        expect(find("#start_date").value).to eq I18n.l(start_date)
+        expect(find("input[name='start_date'").value).to eq I18n.l(start_date)
       end   
     end
   end

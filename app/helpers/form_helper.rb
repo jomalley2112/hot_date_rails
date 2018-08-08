@@ -7,12 +7,12 @@ module FormHelper
 	  end
 
 	  private
-	  def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
-	  	formatted_value = I18n.l(value.to_date) if value.present?
-	  	input_attrs = InputAttrs.new(field_name, cls, opts)
-	  	text_field_tag("#{field_name}", formatted_value, input_attrs.to_h) + \
-	    hidden_field_tag(field_name, nil, { :class => field_name.to_s + "-alt", :id => "#{field_name}_hdn", value: value })
-	  end
+		def draw_ext_input_tag(field_name, value, cls, locale_format=nil, opts={})
+			formatted_value = I18n.l(value.to_date) if value.present?
+			input_attrs = InputAttrs.new(field_name, cls, opts)
+			text_field_tag("#{field_name}", formatted_value, input_attrs.to_h.reverse_merge({ id: FormHelper.random_input_id(field_name) })) + \
+			hidden_field_tag(field_name, nil, { class: field_name.to_s + "-alt", id: FormHelper.random_input_id(field_name, "hidden"), value: value })
+		end
 	end
 
 	class ActionView::Helpers::FormBuilder
@@ -49,7 +49,7 @@ module FormHelper
 	  	formatted_value = I18n.localize(value, format: locale_format) if value.present?
 	  	input_attrs = InputAttrs.new(attr, cls, opts)
 	  	self.text_field("#{attr}", input_attrs.to_h.merge(value: (formatted_value || ""))) + \
-	    self.hidden_field(attr, { :class => attr.to_s + "-alt", :id => "#{attr}_hdn" }) #hidden_field handles setting the value from the attribute
+	    self.hidden_field(attr, { :class => attr.to_s + "-alt", id: FormHelper.input_id(object, attr) })
 	  end
 
 	  def column_type(attr)
@@ -81,5 +81,16 @@ module FormHelper
 	  	data[:second_grid] ||= hd_config.second_grid
 	  	self[:data] = data
 		end
+	end
+
+	private
+	def self.input_id(parent_obj, suffix=nil)
+		#Uses the parent object for the id because each scope can only have a single input for each attribute
+		"hdr-hidden-#{parent_obj.class.to_s.downcase}-#{parent_obj.object_id}-#{suffix}"
+	end
+
+	def self.random_input_id(suffix=nil, type="text")
+		random_id = SecureRandom.urlsafe_base64
+		"hdr-#{type}-tag-#{random_id}-#{suffix}"
 	end
 end
