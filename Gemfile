@@ -16,7 +16,7 @@ end
 group :test, :development do
 	gem 'sqlite3'
 	gem 'pry-rails'
-	#TODOO: because of something homebrew screwed up version-wise (https://stackoverflow.com/questions/16756287/cannot-execute-rails-console-due-to-an-error-with-readline). Hopefully  can remove it at some point
+	#TODO: Apparently because of something homebrew screwed up version-wise (https://stackoverflow.com/questions/16756287/cannot-execute-rails-console-due-to-an-error-with-readline). Hopefully can remove it at some point
 	gem 'rb-readline' 
 end
 
