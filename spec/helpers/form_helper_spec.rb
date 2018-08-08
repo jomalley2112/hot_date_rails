@@ -1,5 +1,7 @@
 require 'spec_helper'
+
 include ActionView::Context
+
 describe ActionView::Helpers::FormBuilder do
  	let!(:template) { Object.new }
  	let!(:schedule) { FactoryGirl.create(:schedule) }
@@ -89,15 +91,6 @@ describe ActionView::Helpers::FormBuilder do
 
 	  end
 	
-	end
-
-	private
-	def id_attr(input, type="text")
-		Nokogiri::HTML.parse(input).xpath("//input[@type='#{type}']").attribute("id").value
-	end
-
-	def id_attr_from_html(html_frag, input_index, type="text")
-		Nokogiri::HTML.parse(html_frag).xpath("//input[@type='#{type}'][#{input_index}]").attribute("id").value
 	end
 	
 end
