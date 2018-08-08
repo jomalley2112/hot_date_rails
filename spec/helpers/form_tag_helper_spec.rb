@@ -21,6 +21,20 @@ describe "ActionView::Helpers::FormTagHelper" do
 				expect(id_attr(@input1, "hidden")).not_to eq(id_attr(@input2, "hidden"))
 			end	
 		end
+
+		context 'when specifying an id' do
+			before do
+			  @input1 = template.hd_picker_tag(:birthday, nil, "datepicker", {html: {id: "input1-id"}})
+			end
+			describe 'sets the id attribute accordingly' do
+				example "for the text input" do
+					expect(id_attr(@input1)).to eq("input1-id")
+				end
+			end
+			it 'does not set the id attribute to the same thing for both the text and hidden inputs' do
+				expect(id_attr(@input1)).not_to eq(id_attr(@input1, "hidden"))
+			end
+		end
 		
 	end
 end
