@@ -4,7 +4,7 @@ include ActionView::Context
 
 describe ActionView::Helpers::FormBuilder do
  	let!(:template) { Object.new }
- 	let!(:schedule) { FactoryGirl.create(:schedule) }
+ 	let!(:schedule) { FactoryBot.create(:schedule) }
  	before(:each) do
 		template.extend ActionView::Helpers::FormHelper
  		template.extend ActionView::Helpers::FormOptionsHelper
@@ -23,10 +23,10 @@ describe ActionView::Helpers::FormBuilder do
 	  end
 	  
 	  context 'when adding inputs to a form for the same attribute for multiple existing (has_many) children' do
-	  	let!(:person) { FactoryGirl.create(:person) }
+	  	let!(:person) { FactoryBot.create(:person) }
 	  	
 	  	before do
-	  	  2.times { person.schedules << FactoryGirl.create(:schedule) }
+	  	  2.times { person.schedules << FactoryBot.create(:schedule) }
 	  	end
 	  	let!(:person_form_builder) { 
 	  		ActionView::Helpers::FormBuilder.new(:person, person, template, {}) 
@@ -66,7 +66,7 @@ describe ActionView::Helpers::FormBuilder do
 	  end
 
 	  context 'when adding multiple inputs for new instances of the same has_many attribute type' do
-	  	let!(:person) { FactoryGirl.create(:person) }
+	  	let!(:person) { FactoryBot.create(:person) }
 	  	let!(:person_form_builder) { 
 	  		ActionView::Helpers::FormBuilder.new(:person, person, template, {}) 
 	  	}
