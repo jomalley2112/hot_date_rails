@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "ActionView::Helpers::FormTagHelper" do
 	let!(:template) { Object.new }
-	let!(:schedule) { FactoryGirl.create(:schedule) }
+	let!(:schedule) { FactoryBot.create(:schedule) }
 	before do
 	  template.extend ActionView::Helpers::FormTagHelper
  		template.extend ActionView::Helpers::FormOptionsHelper

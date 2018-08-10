@@ -67,7 +67,7 @@ RSpec.describe "Time Picker", :type => :request do
   describe "Update Existing", :js => true do
   	before(:each) do
   		@curr_date = Time.now
-  	  @schedule = FactoryGirl.create(:schedule, lunchtime: @curr_date.to_time.strftime("%H:%M"),
+  	  @schedule = FactoryBot.create(:schedule, lunchtime: @curr_date.to_time.strftime("%H:%M"),
   	  	alarm_setting: @curr_date.to_time.strftime("%H:%M:%S"), 
   	  	suppertime: @curr_date.to_time.strftime("%H:%M"), beer_oclock: @curr_date.to_time.strftime("%H:%M"))
   	  visit edit_schedule_path(@schedule)
@@ -99,14 +99,14 @@ RSpec.describe "Time Picker", :type => :request do
 		  describe "12-hour clock and lower case meridian format" do
 		  	it "displays single-digit hour" do
 		  		date_obj = DateTime.strptime("1:45 am", "%H:%M %P")
-		  		@schedule = FactoryGirl.create(:schedule, suppertime: date_obj)
+		  		@schedule = FactoryBot.create(:schedule, suppertime: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#schedule_suppertime").click
 		  		find("#schedule_suppertime").value.should match(I18n.localize(date_obj, format: :lc_merid))
 		  	end
 		  	it "displays double-digit hour" do
 		  		date_obj = DateTime.strptime("11:47 pm", "%H:%M %P")
-		  		@schedule = FactoryGirl.create(:schedule, suppertime: date_obj)
+		  		@schedule = FactoryBot.create(:schedule, suppertime: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#schedule_suppertime").click
 		  		find("#schedule_suppertime").value.should match(I18n.localize(date_obj, format: :lc_merid))
@@ -116,14 +116,14 @@ RSpec.describe "Time Picker", :type => :request do
 		  describe "12-hour clock and upper case meridian format" do
 		  	it "displays single-digit hour" do
 		  		date_obj = DateTime.strptime("1:45 am", "%H:%M %p")
-		  		@schedule = FactoryGirl.create(:schedule, beer_oclock: date_obj)
+		  		@schedule = FactoryBot.create(:schedule, beer_oclock: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#schedule_beer_oclock").click
 		  		find("#schedule_beer_oclock").value.should match(I18n.localize(date_obj, format: :uc_merid))
 		  	end
 		  	it "displays double-digit hour" do
 		  		date_obj = DateTime.strptime("11:47 pm", "%H:%M %p")
-		  		@schedule = FactoryGirl.create(:schedule, beer_oclock: date_obj)
+		  		@schedule = FactoryBot.create(:schedule, beer_oclock: date_obj)
 		  		visit edit_schedule_path(@schedule)
 		  		find("#schedule_beer_oclock").click
 		  		find("#schedule_beer_oclock").value.should match(I18n.localize(date_obj, format: :uc_merid))

@@ -71,7 +71,7 @@ RSpec.describe "Date Picker", :type => :request do
   	
   	it "displays current value in default format specified in locale file" do
   		@curr_date = Time.now
-  	  @schedule = FactoryGirl.create(:schedule, birthday: @curr_date.to_date)
+  	  @schedule = FactoryBot.create(:schedule, birthday: @curr_date.to_date)
   	  visit edit_schedule_path(@schedule)
   		find("#schedule_birthday").value.should eq I18n.localize(@curr_date.to_date)
   	end
@@ -80,7 +80,7 @@ RSpec.describe "Date Picker", :type => :request do
   		describe "standard format" do
   			it "selects correct date when displaying 11/11/2013" do
 	    		@curr_date = Time.now
-		  	  @schedule = FactoryGirl.create(:schedule, birthday: "#{@curr_date.year}-11-11")
+		  	  @schedule = FactoryBot.create(:schedule, birthday: "#{@curr_date.year}-11-11")
 		  	  visit edit_schedule_path(@schedule)
           find("body").click
 	      	find("#schedule_birthday").click
@@ -92,7 +92,7 @@ RSpec.describe "Date Picker", :type => :request do
 	  	describe "optional formats" do
 	    	it "selects correct date when displaying December 25, 2013" do
 	    		@curr_date = Time.now
-		  	  @schedule = FactoryGirl.create(:schedule, christmas: "#{@curr_date.year}-12-25")
+		  	  @schedule = FactoryBot.create(:schedule, christmas: "#{@curr_date.year}-12-25")
 		  	  visit edit_schedule_path(@schedule)
           find("body").click
 	      	find("#schedule_christmas").click
@@ -102,7 +102,7 @@ RSpec.describe "Date Picker", :type => :request do
 				end
         it "selects correct date when displaying .*day Apr 30, 2014" do
           @curr_date = Time.now
-          @schedule = FactoryGirl.create(:schedule, easter: "#{@curr_date.year}-4-30")
+          @schedule = FactoryBot.create(:schedule, easter: "#{@curr_date.year}-4-30")
           visit edit_schedule_path(@schedule)
           find("body").click
           find("#schedule_easter").click
