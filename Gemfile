@@ -10,7 +10,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 group :test do
 	gem 'fuubar', platforms: [:ruby]
-	gem 'webdrivers', platforms: [:ruby]
 end
 
 group :test, :development do
