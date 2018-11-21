@@ -2,7 +2,7 @@
 [![Gem Version](https://badge.fury.io/rb/hot_date_rails.svg)](http://badge.fury.io/rb/hot_date_rails)
 
 #### Description ####
-There's a ton of time/date/datetime picker gems out, but I couldn't find one that worked for what I needed. This one is a single gem that allows you to add date, time and datetime pickers to your forms. This gem also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
+There are time/date/datetime picker gems already, but I couldn't find one that worked for what I needed. This one includes helpers for date, time and datetime pickers. It also takes into account the way Ruby doesn't parse certain American-friendly dates so it passes along hidden fields with the values expected by rails. When updating the values they are "localized" using the locale file to get them into the format expected by the picker. 
 
 #### Setup ####
 - Add `gem 'hot_date_rails'` to Gemfile
@@ -26,7 +26,8 @@ form_object.hd_picker(name, options={}, locale_format=nil, cls=nil)
 hd_picker_tag(field_name, value=nil, cls="datepicker", options={}, locale_format=nil)
 ```
 
-- *name* - a symbol representing the form field
+- *name* - a symbol representing the form field. 
+  Note that by default the ID attribute of the generated fields will be randomized to make certain it is unique. If needed you can specify the ID as an html option. See the [Example Tag Helper Calls section](#ethc).
 - *options* - see the [Form Helper Options](#fho) section below
 - *locale_format* - the name of a strftime format specified under the corresponding branch in the locale file. Use this when specifying :date_format and/or :time_format. This is necessary to synchronize the format strings used for the date/time pickers with Ruby's [strftime format directives](http://apidock.com/ruby/DateTime/strftime).
 	- A [base set](#locales) of locale_formats are included for english and custom formats can be added.
@@ -105,12 +106,19 @@ hd_picker_tag(field_name, value=nil, cls="datepicker", options={}, locale_format
 <% end %>
 ```
 
-#### Example Tag Helper Calls ####
+#### <a name="ethc"></a>Example Tag Helper Calls ####
 ```RHTML
 <%= form_tag(filtered_schedules_path, method: :get) do %>
 	<%= hd_picker_tag :start_date, (@start_date || Date.today - 1.month) %><!-- datepicker is default -->
 	to
 	<%= hd_picker_tag :end_date, (@end_date || Date.today), "datetimepicker" %><!-- using datetimepicker -->
+<% end %>
+```
+
+```RHTML
+<%= form_tag(filtered_schedules_path, method: :get) do %>
+	<!-- to override randomized id attribute -->
+	<%= hd_picker_tag :important_date, @important_date, "datepicker", html: { id: "important_date" } %>
 <% end %>
 ```
 
@@ -162,8 +170,8 @@ end
 #### <a name="locales"></a>Base Set of included locale formats ####
 ```YAML
 en:
-	date:
-  	formats:
+  date:
+    formats:
       default: "%m/%d/%Y"
       full_month: "%B %-d, %Y"
       full_day_month: "%A %B %-d, %Y"
