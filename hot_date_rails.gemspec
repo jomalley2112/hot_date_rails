@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile"]
   # s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency 'rails', '~> 5.0'
+  s.add_dependency "activerecord", '~> 5.0'
+  s.add_dependency 'sprockets-rails'
   s.add_dependency 'rails-html-sanitizer', '~> 1.0.4'
   s.add_dependency 'coffee-rails', '~> 4.2'
   s.add_dependency 'jquery-rails', '~> 4.3'
