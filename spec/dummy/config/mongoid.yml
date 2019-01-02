@@ -1,0 +1,6 @@
+test:
+  clients:
+    default:
+      database: mongo_hdr_test
+      hosts:
+        - localhost:27017
