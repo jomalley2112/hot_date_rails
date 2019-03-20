@@ -6,12 +6,12 @@ FactoryBot.define do
 
   factory :schedule do
     sequence(:name) { |n| "Schedule ##{n}" }
-    birthday Time.now
-    lunchtime Time.now
-    apocalypse Time.now
-    epoch Time.now
-    christmas Time.now
-    alarm_setting Time.now
+    birthday {Time.now}
+    lunchtime {Time.now}
+    apocalypse {Time.now}
+    epoch {Time.now}
+    christmas {Time.now}
+    alarm_setting {Time.now}
   end
 
 end

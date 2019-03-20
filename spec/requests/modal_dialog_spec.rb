@@ -2,7 +2,7 @@ require 'spec_helper'
 
 RSpec.describe "Dynamically added inputs", :type => :request do
 	context "when input is on a modal dialog", js: true do
-		let!(:schedule) { FactoryBot.create(:schedule) }
+		let!(:schedule) { create(:schedule) }
 		it "performs no differently" do
 			visit schedules_path
 			find("body").click
