@@ -49,7 +49,7 @@ RSpec.describe "Datetime Picker", :type => :request do
   describe "Update Existing", :js => true do
   	before(:each) do
   		@curr_date = Time.now
-  	  @schedule = FactoryBot.create(:schedule, apocalypse: @curr_date.to_datetime)
+  	  @schedule = create(:schedule, apocalypse: @curr_date.to_datetime)
   	  visit edit_schedule_path(@schedule)
   	end
 
@@ -72,7 +72,7 @@ RSpec.describe "Datetime Picker", :type => :request do
       end
       it "shows the date that we chose in the correct localized format" do
         @curr_date = Time.now
-        @schedule = FactoryBot.create(:schedule, date_in_time: @curr_date.to_date)
+        @schedule = create(:schedule, date_in_time: @curr_date.to_date)
         visit "/custom_schedules\/#{@schedule.id}\/edit"
         find("#schedule_date_in_time").value.should eq I18n.localize(@curr_date.to_date)
       end
@@ -86,7 +86,7 @@ RSpec.describe "Datetime Picker", :type => :request do
       end
       it "shows the date that we chose in the correct localized format" do
         @curr_date = Time.now
-        @schedule = FactoryBot.create(:schedule, time_of_date: @curr_date)
+        @schedule = create(:schedule, time_of_date: @curr_date)
         visit "/custom_schedules\/#{@schedule.id}\/edit"
         find("#schedule_time_of_date").value.should eq @curr_date.strftime("%H:%M")
       end

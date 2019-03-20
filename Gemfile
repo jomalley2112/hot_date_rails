@@ -9,7 +9,7 @@ gemspec
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
 
 group :test do
-	gem 'fuubar', platforms: [:ruby]
+	gem 'fuubar', '~> 2.3.2', platforms: [:ruby]
 end
 
 group :test, :development do

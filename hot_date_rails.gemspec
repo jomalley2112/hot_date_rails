@@ -21,7 +21,7 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile"]
   # s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "activerecord", '~> 5.0'
+  s.add_dependency "activerecord", '~> 5.2.2.1'
   s.add_dependency 'sprockets-rails'
   s.add_dependency 'rails-html-sanitizer', '~> 1.0.4'
   s.add_dependency 'coffee-rails', '~> 4.2'
@@ -34,8 +34,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'database_cleaner', '>= 1.5.3'
   s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'factory_bot_rails'
-  s.add_development_dependency 'mongoid', '~> 6.1'
-  s.add_development_dependency 'rspec-rails', '~> 3.5' 
+  s.add_development_dependency 'factory_bot_rails', '~> 5.0'
+  s.add_development_dependency 'mongoid', '~> 6.4.1'
+  s.add_development_dependency 'rspec-rails', '~> 3.8' 
   
 end
