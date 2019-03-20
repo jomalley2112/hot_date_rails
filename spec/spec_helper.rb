@@ -18,6 +18,7 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
   config.order = "random"
   config.include Capybara::DSL
+  config.include FactoryBot::Syntax::Methods
   config.expect_with :rspec do |c|
     c.syntax = [:should, :expect]
   end
