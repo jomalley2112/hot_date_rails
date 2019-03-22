@@ -1,2 +1,2 @@
-<%= "--format Fuubar" unless RUBY_PLATFORM == "i386-mingw32" %>
+<%= "--format Fuubar" unless ["x64-mingw32", "i386-mingw32"].include?(RUBY_PLATFORM)  %>
 --color
