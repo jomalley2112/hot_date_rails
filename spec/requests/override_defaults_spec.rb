@@ -86,10 +86,8 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 		describe "date format" do
 			describe "overridden default time" do
 				before(:each) do
-			  	HotDateRails.config do |c|
-			  		c.date_format = "MM d, yy"
-			  	end
 			  	#defaults are usually overridden in spec/dummy/config/environment.rb
+			  	mock_config_setting :date_format, "MM d, yy"
 			  	visit '/custom_schedules/new'
 			  	find("body").click
 				end
@@ -107,9 +105,7 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 		describe "time Format", slider: true do
 			describe "overridden default time" do
 				before(:each) do
-			  	HotDateRails.config do |c|
-			  		c.time_format = "h:mm tt"
-			  	end
+			  	mock_config_setting :time_format, "h:mm tt"
 			  	visit '/custom_schedules/new'
 			  	find("body").click
 				end
@@ -126,10 +122,8 @@ RSpec.describe "Override Defaults", :type => :request, :js => true, defaults: tr
 		describe "datetime Format", slider: true do
 			describe "overridden default datetime" do
 				before(:each) do
-			  	HotDateRails.config do |c|
-			  		c.date_format = "MM d, yy"
-			  		c.time_format = "h:mm tt"
-			  	end
+			  	mock_config_setting :date_format, "MM d, yy"
+			  	mock_config_setting :time_format, "h:mm tt"
 			  	visit '/custom_schedules/new'
 			  	find("body").click
 				end
