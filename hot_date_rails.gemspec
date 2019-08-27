@@ -30,6 +30,8 @@ Gem::Specification.new do |s|
   s.add_dependency 'loofah', '~> 2.2.3'
   s.add_dependency 'rack', '~> 2.0.6' 
   s.add_dependency 'rubyzip', '~> 1.2.2'
+  s.add_dependency "nokogiri", '~> 1.10.4'
+
   
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'database_cleaner', '>= 1.5.3'
