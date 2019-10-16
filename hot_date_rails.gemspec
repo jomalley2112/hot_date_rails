@@ -29,7 +29,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'ffi', '~> 1.9.24'
   s.add_dependency 'loofah', '~> 2.2.3'
   s.add_dependency 'rack', '~> 2.0.6' 
-  s.add_dependency 'rubyzip', '~> 1.2.2'
+  s.add_dependency 'rubyzip', '>= 1.3.0'
   s.add_dependency "nokogiri", '~> 1.10.4'
 
   
