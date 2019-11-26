@@ -1,3 +1,3 @@
 module HotDateRails
-  VERSION = "1.5.19"
+  VERSION = "2.0.0"
 end
