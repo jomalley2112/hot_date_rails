@@ -21,13 +21,13 @@ Gem::Specification.new do |s|
   s.files = Dir["{app,config,lib,vendor}/**/*", "MIT-LICENSE", "Rakefile"]
   # s.test_files = Dir["spec/**/*"]
 
-  s.add_dependency "activerecord", '~> 5.2.3'
+  s.add_dependency "activerecord", '~> 6.0'
   s.add_dependency 'sprockets-rails'
-  s.add_dependency 'rails-html-sanitizer', '~> 1.0.4'
-  s.add_dependency 'coffee-rails', '~> 4.2'
+  s.add_dependency 'rails-html-sanitizer', '~> 1.3'
+  s.add_dependency 'coffee-rails', '~> 5.0'
   s.add_dependency 'jquery-rails', '~> 4.3'
   s.add_dependency 'ffi', '~> 1.9.24'
-  s.add_dependency 'loofah', '~> 2.2.3'
+  s.add_dependency 'loofah', '~> 2.3'
   s.add_dependency 'rack', '~> 2.0.6' 
   s.add_dependency 'rubyzip', '>= 1.3.0'
   s.add_dependency "nokogiri", '~> 1.10.4'
@@ -36,8 +36,8 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'database_cleaner', '>= 1.5.3'
   s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'factory_bot_rails', '~> 5.0'
-  s.add_development_dependency 'mongoid', '~> 6.4.1'
-  s.add_development_dependency 'rspec-rails', '~> 3.8' 
+  s.add_development_dependency 'factory_bot_rails', '~> 5.1'
+  s.add_development_dependency 'mongoid', '~> 7.0'
+  s.add_development_dependency 'rspec-rails', '~> 3.9' 
   
 end
