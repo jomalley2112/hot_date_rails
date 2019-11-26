@@ -4,6 +4,9 @@ source "https://rubygems.org"
 # Bundler will treat runtime dependencies like base dependencies, and
 # development dependencies will be added by default to the :development group.
 
+# Note: JOM when updating to rails 6 this is the bundle update command that worked:
+# bundle update activerecord mongoid rspec-rails factory_bot_rails activesupport loofah rails-html-sanitizer tzinfo-data
+
 gemspec
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw]
