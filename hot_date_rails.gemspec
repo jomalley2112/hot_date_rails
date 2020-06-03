@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
   # s.test_files = Dir["spec/**/*"]
 
   s.add_dependency "activerecord", '~> 6.0'
+  s.add_dependency "activesupport", '>= 6.0.3.1' # mitigate vulnerability CVE-2020-8165
   s.add_dependency 'sprockets-rails'
   s.add_dependency 'rails-html-sanitizer', '~> 1.3'
   s.add_dependency 'coffee-rails', '~> 5.0'
