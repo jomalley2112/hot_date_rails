@@ -63,3 +63,5 @@ if ENV["_system_name"] == 'OSX'
     Capybara::Selenium::Driver.new(app, :browser => :chrome)
   end
 end
+
+Capybara.server = :webrick # Capybara now wants to use system tests by default, which use puma
